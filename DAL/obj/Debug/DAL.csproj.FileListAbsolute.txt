@@ -37,3 +37,17 @@ C:\Users\HP\Desktop\NNINO_PRJ\DAL\obj\Debug\DAL.csproj.CoreCompileInputs.cache
 C:\Users\HP\Desktop\NNINO_PRJ\DAL\obj\Debug\DAL.csproj.CopyComplete
 C:\Users\HP\Desktop\NNINO_PRJ\DAL\obj\Debug\DAL.dll
 C:\Users\HP\Desktop\NNINO_PRJ\DAL\obj\Debug\DAL.pdb
+C:\Users\HP\GitRepositories\NNINO_PRJ\DAL\bin\Debug\DAL.dll.config
+C:\Users\HP\GitRepositories\NNINO_PRJ\DAL\bin\Debug\DAL.dll
+C:\Users\HP\GitRepositories\NNINO_PRJ\DAL\bin\Debug\DAL.pdb
+C:\Users\HP\GitRepositories\NNINO_PRJ\DAL\bin\Debug\EntityFramework.dll
+C:\Users\HP\GitRepositories\NNINO_PRJ\DAL\bin\Debug\EntityFramework.SqlServer.dll
+C:\Users\HP\GitRepositories\NNINO_PRJ\DAL\bin\Debug\EntityFramework.xml
+C:\Users\HP\GitRepositories\NNINO_PRJ\DAL\bin\Debug\EntityFramework.SqlServer.xml
+C:\Users\HP\GitRepositories\NNINO_PRJ\DAL\obj\Debug\DAL.csprojAssemblyReference.cache
+C:\Users\HP\GitRepositories\NNINO_PRJ\DAL\obj\Debug\DAL.Migrations.initial.resources
+C:\Users\HP\GitRepositories\NNINO_PRJ\DAL\obj\Debug\DAL.csproj.GenerateResource.cache
+C:\Users\HP\GitRepositories\NNINO_PRJ\DAL\obj\Debug\DAL.csproj.CoreCompileInputs.cache
+C:\Users\HP\GitRepositories\NNINO_PRJ\DAL\obj\Debug\DAL.csproj.CopyComplete
+C:\Users\HP\GitRepositories\NNINO_PRJ\DAL\obj\Debug\DAL.dll
+C:\Users\HP\GitRepositories\NNINO_PRJ\DAL\obj\Debug\DAL.pdb
