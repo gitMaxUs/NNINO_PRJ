@@ -9,11 +9,15 @@ namespace DAL.Entities
         [ForeignKey("Lesson")]
         public int Id { get; set; }
 
+        [MaxLength(10)]
         public string Name { get; set; }
 
+        [MaxLength(12)]
         public string Surname { get; set; }
 
-       // public int? LessonId { get; set; }
+
+      //  [ForeignKey("Lesson")]
+        public int? LessonId { get; set; }
         public Lesson Lesson { get; set; }
          
     }

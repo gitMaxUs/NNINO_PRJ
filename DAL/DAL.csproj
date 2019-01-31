@@ -50,6 +50,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Entities\Address.cs" />
     <Compile Include="Entities\EFContext.cs" />
     <Compile Include="Entities\Group.cs" />
     <Compile Include="Entities\Jornal.cs" />
@@ -58,9 +59,9 @@
     <Compile Include="Entities\Student.cs" />
     <Compile Include="Entities\Teacher.cs" />
     <Compile Include="Entities\ConcreteLesson.cs" />
-    <Compile Include="Migrations\201901301932151_initial.cs" />
-    <Compile Include="Migrations\201901301932151_initial.Designer.cs">
-      <DependentUpon>201901301932151_initial.cs</DependentUpon>
+    <Compile Include="Migrations\201901311837211_RemoveForigenKeyAtribute.cs" />
+    <Compile Include="Migrations\201901311837211_RemoveForigenKeyAtribute.Designer.cs">
+      <DependentUpon>201901311837211_RemoveForigenKeyAtribute.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -75,8 +76,8 @@
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="Migrations\201901301932151_initial.resx">
-      <DependentUpon>201901301932151_initial.cs</DependentUpon>
+    <EmbeddedResource Include="Migrations\201901311837211_RemoveForigenKeyAtribute.resx">
+      <DependentUpon>201901311837211_RemoveForigenKeyAtribute.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

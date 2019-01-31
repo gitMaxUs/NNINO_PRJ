@@ -20,7 +20,7 @@ namespace BL.Services
         public IEnumerable<StudentDTO> GetItems()
         {
             IEnumerable<Student> students = unitOfWork.StudentsUOW.GetAll();
-
+            
             var mapper = new MapperConfiguration(cfg => cfg.CreateMap<Student, StudentDTO>()).CreateMapper();
             return mapper.Map<IEnumerable<Student>, List<StudentDTO>>(students);
         }

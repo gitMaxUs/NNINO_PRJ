@@ -3,7 +3,7 @@ namespace DAL.Migrations
     using System;
     using System.Data.Entity.Migrations;
     
-    public partial class initial : DbMigration
+    public partial class RemoveForigenKeyAtribute : DbMigration
     {
         public override void Up()
         {
@@ -21,12 +21,12 @@ namespace DAL.Migrations
                 c => new
                     {
                         Id = c.Int(nullable: false, identity: true),
-                        Name = c.String(nullable: false),
-                        Surname = c.String(nullable: false),
+                        Name = c.String(nullable: false, maxLength: 10),
+                        Surname = c.String(nullable: false, maxLength: 12),
                         BirthDate = c.String(),
-                        PhoneNumber = c.String(),
-                        PerentPhoneNumber = c.String(),
-                        Adress = c.String(),
+                        PhoneNumber = c.String(maxLength: 15),
+                        PerentPhoneNumber = c.String(maxLength: 15),
+                        Adress = c.String(maxLength: 60),
                         GroupId = c.Int(),
                     })
                 .PrimaryKey(t => t.Id)
@@ -38,7 +38,8 @@ namespace DAL.Migrations
                 c => new
                     {
                         Id = c.Int(nullable: false, identity: true),
-                        LessonName = c.String(),
+                        LessonName = c.String(maxLength: 30),
+                        TeacherId = c.Int(),
                     })
                 .PrimaryKey(t => t.Id);
             
@@ -59,8 +60,9 @@ namespace DAL.Migrations
                 c => new
                     {
                         Id = c.Int(nullable: false),
-                        Name = c.String(),
-                        Surname = c.String(),
+                        Name = c.String(maxLength: 10),
+                        Surname = c.String(maxLength: 12),
+                        LessonId = c.Int(),
                     })
                 .PrimaryKey(t => t.Id)
                 .ForeignKey("dbo.Lessons", t => t.Id)

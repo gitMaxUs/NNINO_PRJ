@@ -11,7 +11,7 @@ namespace DAL.Entities
         public DbSet<Lesson> Lessons { get; set; }
         public DbSet<PresetStudent> PresetStudents { get; set; }
 
-        public EFContext()
+        public EFContext() : base("DiplomDB")
         {
 
         }
@@ -26,14 +26,15 @@ namespace DAL.Entities
     //    {
     //        Teacher teacher;
     //        Lesson lesson;
-    //        Student student1;
+    //        Student student1 = new Student();
     //        Student student2;
 
+    //        student1.Group.GroupName = "salsa";
 
     //        lesson = new Lesson()
     //        {
     //            LessonName = "Math"
-    //          //  ThemsOfLesson = new ConcreteLesson();
+    //            //  ThemsOfLesson = new ConcreteLesson();
     //        };
     //        teacher = new Teacher()
     //        {
@@ -44,7 +45,7 @@ namespace DAL.Entities
     //        Group group = new Group()
     //        {
     //            GroupName = "428",
-    //          //  Students = Students.A
+    //            //  Students = Students.A
     //        };
     //        student1 = new Student
     //        {
@@ -73,6 +74,6 @@ namespace DAL.Entities
     //        db.Groups.Add(group);
     //        db.SaveChanges();
     //    }
-   // }
+    //}
 
 }

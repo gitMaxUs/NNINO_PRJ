@@ -7,13 +7,13 @@ namespace DAL.Migrations
     using System.Resources;
     
     [GeneratedCode("EntityFramework.Migrations", "6.2.0-61023")]
-    public sealed partial class initial : IMigrationMetadata
+    public sealed partial class RemoveForigenKeyAtribute : IMigrationMetadata
     {
-        private readonly ResourceManager Resources = new ResourceManager(typeof(initial));
+        private readonly ResourceManager Resources = new ResourceManager(typeof(RemoveForigenKeyAtribute));
         
         string IMigrationMetadata.Id
         {
-            get { return "201901301932151_initial"; }
+            get { return "201901311837211_RemoveForigenKeyAtribute"; }
         }
         
         string IMigrationMetadata.Source
