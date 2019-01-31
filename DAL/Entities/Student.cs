@@ -30,9 +30,8 @@ namespace DAL.Entities
         // [Required]
         [MaxLength(60)]
         public string Adress { get; set; }
+        
 
-
-       // [ForeignKey("Group")]
         public int? GroupId { get; set; } 
         public Group Group { get; set; }
 

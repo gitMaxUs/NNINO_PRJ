@@ -12,6 +12,8 @@ namespace BLL.Interfaces
         IEnumerable<StudentDTO> GetStudents(GroupDTO group);
 
         IEnumerable<TeacherDTO> GetTeachers();
+
+        //void NotifyStudentProblem(StudentDTO student);
         
     }
 }

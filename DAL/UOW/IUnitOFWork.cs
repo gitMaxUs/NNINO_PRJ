@@ -16,6 +16,6 @@ namespace DAL.UOW
 
         IGenericRepository<Lesson> LessonUOW { get; }
 
-        void Save();
+        void SaveAsync();
     }
 }

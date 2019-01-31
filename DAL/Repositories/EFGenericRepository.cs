@@ -5,6 +5,7 @@ using System.Data.Entity;
 using DAL.Entities;
 using System.Text;
 using System.Linq;
+using System.Threading.Tasks;
 
 namespace DAL.Repositories
 {
@@ -18,19 +19,23 @@ namespace DAL.Repositories
             _context = context;
             DBEntity = context.Set<TEntity>();
         }
- 
 
 
-        public IEnumerable<TEntity> GetAll()
+
+        public async Task<IEnumerable<TEntity>> GetAll()
         {
-            return DBEntity.ToList();
+            var result = await DBEntity.ToListAsync();
+            return result;
+            // return  DBEntity.ToList();
         }
 
-        public TEntity Get(int id)
+        public async Task<TEntity> Get(int id)
         {
-            return DBEntity.Find(id);
+            var result = await DBEntity.FindAsync(id);
+            return result;
+            //  return DBEntity.Find(id);
         }
-        
+
         public void Create(TEntity item)
         {
             DBEntity.Add(item);

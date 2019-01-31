@@ -5,7 +5,7 @@ namespace DAL.UOW
 {
     public class EFUnitOfWork : IUnitOFWork
     {
-        private EFContext DB_Context; 
+        private EFContext DB_Context;
         private EFGenericRepository<Student> StudentRepository;
         private EFGenericRepository<Teacher> TeacherRepository;
         private EFGenericRepository<Group> GroupRepository;
@@ -58,9 +58,10 @@ namespace DAL.UOW
             }
         }
 
-        public void Save()
+        public async void SaveAsync()
         {
-            DB_Context.SaveChanges();
+            await DB_Context.SaveChangesAsync();
+            // DB_Context.SaveChanges();
         }
     }
 }

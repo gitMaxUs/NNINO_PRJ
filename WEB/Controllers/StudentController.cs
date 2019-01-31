@@ -2,6 +2,7 @@
 using BL.Services;
 using BL.TransferObjects;
 using System.Collections.Generic;
+using System.Threading.Tasks;
 using System.Web.Http;
 using WEB.Models;
 using WEB.UTIL;
@@ -25,9 +26,9 @@ namespace WEB.Controllers
 
 
         [HttpGet]
-        public IHttpActionResult GetListOfStudents()
+        public async Task<IHttpActionResult> GetListOfStudents()
         {
-            IEnumerable<StudentDTO> studentDTO = StudentService.GetItems();
+            IEnumerable<StudentDTO> studentDTO = await StudentService.GetItemsAsync();
 
             if (studentDTO == null)
                 throw new HttpResponseException(System.Net.HttpStatusCode.NotFound);
@@ -36,24 +37,25 @@ namespace WEB.Controllers
         }
 
         [HttpGet]
-        public IHttpActionResult GetStudentById(int? id)
+        public async Task<IHttpActionResult> GetStudentById(int? id)
         {
             if (id == null)
                 return NotFound();
 
-            StudentDTO studentDTO = StudentService.GetItem(id);
+            StudentDTO studentDTO = await StudentService.GetItemAsync(id);
             if (studentDTO == null)
                 throw new HttpResponseException(System.Net.HttpStatusCode.NotFound);
 
             var mapper = new MapperConfiguration(cfg => cfg.CreateMap<StudentDTO, StudentViewModel>()).CreateMapper();
             StudentViewModel studentView = mapper.Map<StudentDTO, StudentViewModel>(studentDTO);
 
-            StudentService.CreateItem(StudentService.GetItem(id));
+            //  StudentService.CreateItem(await StudentService.GetItemAsync(id));
 
             return Ok(studentView);
         }
 
         // POST: api/Student
+        //[HttpPost("upload")]
         [HttpPost]
         public IHttpActionResult CreateNewStudent([FromBody]StudentViewModel studentView)
         {
@@ -71,7 +73,7 @@ namespace WEB.Controllers
 
         // PUT: api/Student/5
         [HttpPut]
-        public IHttpActionResult UpdateStudentById(int? id, [FromBody]StudentViewModel studentView)
+        public async Task<IHttpActionResult> UpdateStudentById(int? id, [FromBody]StudentViewModel studentView)
         {
             if (!ModelState.IsValid)
                 throw new HttpResponseException(System.Net.HttpStatusCode.BadRequest);
@@ -80,7 +82,7 @@ namespace WEB.Controllers
                 return BadRequest();
 
 
-            StudentDTO item = StudentService.GetItem(id);       //get student by given id
+            StudentDTO item = await StudentService.GetItemAsync(id);       //get student by given id
             item.Id = studentView.Id;
             item.Name = studentView.Name;
             item.Surname = studentView.Surname;
@@ -98,7 +100,7 @@ namespace WEB.Controllers
 
             try
             {
-                var studentDTO = StudentService.GetItem(id);
+                var studentDTO = StudentService.GetItemAsync(id);
                 //if (studentDTO == null)
                 //    throw new HttpResponseException(System.Net.HttpStatusCode.NotFound);
 

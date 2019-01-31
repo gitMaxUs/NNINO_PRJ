@@ -11,9 +11,9 @@ namespace DAL.Entities
     {
         public int Id { get; set; }
 
-        public string Them { get; set; }
+        public string Description { get; set; }
 
-       // [ForeignKey("Lesson")]
+
         public int? LessonId { get; set; }
         public Lesson Lesson { get; set; }
     }

@@ -4,6 +4,7 @@ using DAL.Entities;
 using DAL.UOW;
 using System;
 using System.Collections.Generic;
+using System.Threading.Tasks;
 
 namespace BL.Services
 {
@@ -17,9 +18,9 @@ namespace BL.Services
         }
 
 
-        public IEnumerable<StudentDTO> GetItems()
+        public async Task<IEnumerable<StudentDTO>> GetItemsAsync()
         {
-            IEnumerable<Student> students = unitOfWork.StudentsUOW.GetAll();
+            IEnumerable<Student> students = await unitOfWork.StudentsUOW.GetAll();
             
             var mapper = new MapperConfiguration(cfg => cfg.CreateMap<Student, StudentDTO>()).CreateMapper();
             return mapper.Map<IEnumerable<Student>, List<StudentDTO>>(students);
@@ -33,7 +34,7 @@ namespace BL.Services
             var mapper = new MapperConfiguration(cfg => cfg.CreateMap<StudentDTO, Student>()).CreateMapper();
             var student = mapper.Map<StudentDTO, Student>(instanceDTO);
             unitOfWork.StudentsUOW.Create(student);
-            unitOfWork.Save();
+            unitOfWork.SaveAsync();
         }
 
         public void DeleteItem(int? id)
@@ -41,7 +42,7 @@ namespace BL.Services
             var game = unitOfWork.StudentsUOW.Get(id.Value);
 
             unitOfWork.StudentsUOW.Delete(id);
-            unitOfWork.Save();
+            unitOfWork.SaveAsync();
         }
 
         public void EditItem(StudentDTO instanceDTO)
@@ -54,15 +55,15 @@ namespace BL.Services
             var student = mapper.Map<StudentDTO, Student>(instanceDTO);
 
             unitOfWork.StudentsUOW.Update(student);
-            unitOfWork.Save();
+            unitOfWork.SaveAsync();
         }
 
-        public StudentDTO GetItem(int? id)
+        public async Task<StudentDTO> GetItemAsync(int? id)
         {
             if (id == null)
                 throw new ArgumentNullException();
 
-            Student student = unitOfWork.StudentsUOW.Get(id.Value);
+            Student student = await unitOfWork.StudentsUOW.Get(id.Value);
 
             if (student == null)
                 throw new ArgumentNullException();

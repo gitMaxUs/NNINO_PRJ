@@ -53,7 +53,6 @@
     <Compile Include="Entities\Address.cs" />
     <Compile Include="Entities\EFContext.cs" />
     <Compile Include="Entities\Group.cs" />
-    <Compile Include="Entities\Jornal.cs" />
     <Compile Include="Entities\Lesson.cs" />
     <Compile Include="Entities\PresetStudent.cs" />
     <Compile Include="Entities\Student.cs" />
@@ -62,6 +61,18 @@
     <Compile Include="Migrations\201901311837211_RemoveForigenKeyAtribute.cs" />
     <Compile Include="Migrations\201901311837211_RemoveForigenKeyAtribute.Designer.cs">
       <DependentUpon>201901311837211_RemoveForigenKeyAtribute.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201901311850055_ForigenKeyAtribute2.cs" />
+    <Compile Include="Migrations\201901311850055_ForigenKeyAtribute2.Designer.cs">
+      <DependentUpon>201901311850055_ForigenKeyAtribute2.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201901311920513_ForigenKeyAtribute3.cs" />
+    <Compile Include="Migrations\201901311920513_ForigenKeyAtribute3.Designer.cs">
+      <DependentUpon>201901311920513_ForigenKeyAtribute3.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201901311937014_NEWentitysProp.cs" />
+    <Compile Include="Migrations\201901311937014_NEWentitysProp.Designer.cs">
+      <DependentUpon>201901311937014_NEWentitysProp.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -78,6 +89,15 @@
   <ItemGroup>
     <EmbeddedResource Include="Migrations\201901311837211_RemoveForigenKeyAtribute.resx">
       <DependentUpon>201901311837211_RemoveForigenKeyAtribute.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201901311850055_ForigenKeyAtribute2.resx">
+      <DependentUpon>201901311850055_ForigenKeyAtribute2.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201901311920513_ForigenKeyAtribute3.resx">
+      <DependentUpon>201901311920513_ForigenKeyAtribute3.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201901311937014_NEWentitysProp.resx">
+      <DependentUpon>201901311937014_NEWentitysProp.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
