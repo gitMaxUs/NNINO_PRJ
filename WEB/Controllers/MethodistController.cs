@@ -1,25 +1,23 @@
 ﻿using AutoMapper;
 using BL.Services;
 using BL.TransferObjects;
+using System;
 using System.Collections.Generic;
+using System.Linq;
+using System.Net;
+using System.Net.Http;
 using System.Threading.Tasks;
 using System.Web.Http;
 using WEB.Models;
 using WEB.UTIL;
 
-namespace WEB.Controllers
+namespace WEB_NNINO_2.Controllers
 {
-    public class StudentController : ApiController
+    public class MethodistController : ApiController
     {
-        //IStudentService StudentService;
-        //public StudentController(IStudentService svc)
-        //{
-        //    StudentService = svc;
-        //}
-
         StudentService StudentService;
 
-        public StudentController()
+        public MethodistController()
         {
             StudentService = new StudentService(DBConnection.ConnectionString);
         }
@@ -64,7 +62,7 @@ namespace WEB.Controllers
 
             var studentDTO = new StudentDTO
             {
-                //  studentDTO.Id = studentView.Id;
+                // studentDTO.Id = studentView.Id;
                 Name = studentView.Name,
                 Surname = studentView.Surname
             };
@@ -85,7 +83,7 @@ namespace WEB.Controllers
 
 
             StudentDTO item = await StudentService.GetItemAsync(id);       //get student by given id
-            //item.Id = studentView.Id;
+           // item.Id = studentView.Id;
             item.Name = studentView.Name;
             item.Surname = studentView.Surname;
             StudentService.EditItem(item);
@@ -120,67 +118,4 @@ namespace WEB.Controllers
     }
 
 }
-
-//[Route("api/genres/{id:int}/games")]
-//public IHttpActionResult GetgamesPerGenre(int? id)
-//{
-//    if (id == null)
-//    {
-//        return BadRequest();
-//    }
-
-//    var games = Mapper.Map<IEnumerable<studentDTO>, IEnumerable<GameViewModel>>(GameService.GetGamesperGenre(id.Value));
-//    return Ok(games);
-
-//}
-//[Route("api/games/{id:int}/download")]
-//public IHttpActionResult GetGame()
-//{
-//    var fileInfo = new FileInfo($"{HttpRuntime.AppDomainAppPath}/File/File.bin");
-//    return !fileInfo.Exists
-//        ? (IHttpActionResult)NotFound()
-//        : new FileResult(fileInfo.FullName);
-//}
-//[Route("api/games/{id:int}/comments")]
-//public IHttpActionResult GetGameComments(int? id)
-//{
-//    if (id == null)
-//    {
-//        return BadRequest();
-//    }
-//    var comments = Mapper.Map<IEnumerable<CommentDTO>, IEnumerable<CommentViewModel>>(GameService.GetCommentforGame(id.Value));
-//    return Ok(comments);
-//}
-//[Route("api/games/{id}/comments")]
-//public IHttpActionResult AddComment(int? id, CommentViewModel comment)
-//{
-//    if (id == null)
-//    {
-//        return BadRequest();
-//    }
-
-//    if (comment == null)
-//    {
-//        return BadRequest();
-//    }
-//    GameService.AddCommentToGame(id, Mapper.Map<CommentViewModel, CommentDTO>(comment));
-//    return Ok();
-//}
-//[Route("api/comments/{id}/comments")]
-//public IHttpActionResult AddCommentToComment(int? id, CommentViewModel comment)
-//{
-//    if (id == null)
-//    {
-//        return BadRequest();
-//    }
-
-//    if (comment == null)
-//    {
-//        return BadRequest();
-//    }
-//    GameService.AddCommentToComment(id.Value, Mapper.Map<CommentViewModel, CommentDTO>(comment));
-//    return Ok();
-//}
-
-
 
