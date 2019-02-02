@@ -11,7 +11,7 @@ namespace WEB_NNINO_2.Models
         public string Surname { get; set; }
         public string Email { get; set; }
 
-      //  public int? LessonId { get; set; }
+        //  public int? LessonId { get; set; }
 
         //public int AddressId { get; set; }
     }

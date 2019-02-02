@@ -55,9 +55,9 @@ namespace DAL.UOW
             }
         }
 
-        public async void SaveAsync()
+        public void Save()
         {
-            await DB_Context.SaveChangesAsync();
+             DB_Context.SaveChanges();
         }
     }
 }

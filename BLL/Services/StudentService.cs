@@ -11,17 +11,17 @@ namespace BL.Services
     public class StudentService //: IStudentService
     {
 
-        EFUnitOfWork unitOfWork { get; set; }
+        EFUnitOfWork UnitOfWork { get; set; }
         public StudentService(string connectionString)
         {
-            unitOfWork = new EFUnitOfWork(connectionString);
+            UnitOfWork = new EFUnitOfWork(connectionString);
         }
 
 
-        public async Task<IEnumerable<StudentDTO>> GetItemsAsync()
+        public IEnumerable<StudentDTO> GetItems()
         {
-            IEnumerable<Student> students = await unitOfWork.StudentsUOW.GetAll();
-            
+            IEnumerable<Student> students = UnitOfWork.StudentsUOW.GetAll();
+
             var mapper = new MapperConfiguration(cfg => cfg.CreateMap<Student, StudentDTO>()).CreateMapper();
             return mapper.Map<IEnumerable<Student>, List<StudentDTO>>(students);
         }
@@ -33,16 +33,19 @@ namespace BL.Services
 
             var mapper = new MapperConfiguration(cfg => cfg.CreateMap<StudentDTO, Student>()).CreateMapper();
             var student = mapper.Map<StudentDTO, Student>(instanceDTO);
-            unitOfWork.StudentsUOW.Create(student);
-            unitOfWork.SaveAsync();
+            UnitOfWork.StudentsUOW.Create(student);
+            UnitOfWork.Save();
         }
 
         public void DeleteItem(int? id)
         {
-            var game = unitOfWork.StudentsUOW.Get(id.Value);
-
-            unitOfWork.StudentsUOW.Delete(id);
-            unitOfWork.SaveAsync();
+            var student =  UnitOfWork.StudentsUOW.Get(id.Value);
+            if (student != null)
+            {
+                UnitOfWork.StudentsUOW.Delete(id);
+                UnitOfWork.Save(); 
+            }
+            else throw new Exception();
         }
 
         public void EditItem(StudentDTO instanceDTO)
@@ -54,22 +57,22 @@ namespace BL.Services
             var mapper = new MapperConfiguration(cfg => cfg.CreateMap<StudentDTO, Student>()).CreateMapper();
             var student = mapper.Map<StudentDTO, Student>(instanceDTO);
 
-            unitOfWork.StudentsUOW.Update(student);
-            unitOfWork.SaveAsync();
+            UnitOfWork.StudentsUOW.Update(student);
+            UnitOfWork.Save();
         }
 
-        public async Task<StudentDTO> GetItemAsync(int? id)
+        public StudentDTO GetItem(int? id)
         {
             if (id == null)
                 throw new ArgumentNullException();
 
-            Student student = await unitOfWork.StudentsUOW.Get(id.Value);
+            Student student = UnitOfWork.StudentsUOW.Get(id.Value);
 
             if (student == null)
                 throw new ArgumentNullException();
 
             var mapper = new MapperConfiguration(cfg => cfg.CreateMap<Student, StudentDTO>()).CreateMapper();
-            return (mapper.Map<Student, StudentDTO>(student));
+            return  (mapper.Map<Student, StudentDTO>(student));
         }
 
 

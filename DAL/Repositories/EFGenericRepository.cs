@@ -22,15 +22,29 @@ namespace DAL.Repositories
 
 
 
-        public async Task<IEnumerable<TEntity>> GetAll()
+        public async Task<IEnumerable<TEntity>> GetAllAsync()
         {
             var result = await DBEntity.ToListAsync();
             return result;
         }
 
-        public async Task<TEntity> Get(int id)
+        public async Task<TEntity> GetAsync(int id)
         {
             var result = await DBEntity.FindAsync(id);
+            return result;
+        }
+
+
+
+        public IEnumerable<TEntity> GetAll()
+        {
+            var result = DBEntity.ToList();
+            return result;
+        }
+
+        public TEntity Get(int id)
+        {
+            var result = DBEntity.Find(id);
             return result;
         }
 
@@ -47,14 +61,14 @@ namespace DAL.Repositories
         public void Delete(int? id)
         {
             var item = DBEntity.Find(id.Value);
-            DBEntity.Remove(item);
+            if (item != null)
+                DBEntity.Remove(item);
         }
 
         public IEnumerable<TEntity> Find(Func<TEntity, bool> predicate)
         {
-            var result = _context.Set<TEntity>().Where(predicate).ToList();
+            return _context.Set<TEntity>().Where(predicate).ToList();
 
-            return result;
         }
     }
 }

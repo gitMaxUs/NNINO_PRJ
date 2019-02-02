@@ -19,14 +19,14 @@ namespace WEB_NNINO_2.Controllers
 
         public MethodistController()
         {
-            StudentService = new StudentService(DBConnection.ConnectionString);
+            StudentService = new StudentService(DBConnection.ConnectionString);     // connection string Deffault Connection
         }
 
 
         [HttpGet]
-        public async Task<IHttpActionResult> GetListOfStudents()
+        public IHttpActionResult GetListOfStudents()
         {
-            IEnumerable<StudentDTO> studentDTO = await StudentService.GetItemsAsync();
+            IEnumerable<StudentDTO> studentDTO =  StudentService.GetItems();
 
             if (studentDTO == null)
                 throw new HttpResponseException(System.Net.HttpStatusCode.NotFound);
@@ -35,12 +35,12 @@ namespace WEB_NNINO_2.Controllers
         }
 
         [HttpGet]
-        public async Task<IHttpActionResult> GetStudentById(int? id)
+        public IHttpActionResult GetStudentById(int? id)
         {
             if (id == null)
                 return NotFound();
 
-            StudentDTO studentDTO = await StudentService.GetItemAsync(id);
+            StudentDTO studentDTO = StudentService.GetItem(id);
             if (studentDTO == null)
                 throw new HttpResponseException(System.Net.HttpStatusCode.NotFound);
 
@@ -52,7 +52,6 @@ namespace WEB_NNINO_2.Controllers
             return Ok(studentView);
         }
 
-        // POST: api/Student
         //[HttpPost("upload")]
         [HttpPost]
         public IHttpActionResult CreateNewStudent([FromBody]StudentViewModel studentView)
@@ -73,7 +72,7 @@ namespace WEB_NNINO_2.Controllers
 
         // PUT: api/Student/5
         [HttpPut]
-        public async Task<IHttpActionResult> UpdateStudentById(int? id, [FromBody]StudentViewModel studentView)
+        public IHttpActionResult UpdateStudentById(int? id, [FromBody]StudentViewModel studentView)
         {
             if (!ModelState.IsValid)
                 throw new HttpResponseException(System.Net.HttpStatusCode.BadRequest);
@@ -82,8 +81,8 @@ namespace WEB_NNINO_2.Controllers
                 return BadRequest();
 
 
-            StudentDTO item = await StudentService.GetItemAsync(id);       //get student by given id
-           // item.Id = studentView.Id;
+            StudentDTO item = StudentService.GetItem(id);       //get student by given id
+                                                                           // item.Id = studentView.Id;
             item.Name = studentView.Name;
             item.Surname = studentView.Surname;
             StudentService.EditItem(item);
@@ -93,6 +92,7 @@ namespace WEB_NNINO_2.Controllers
         }
 
         // DELETE: api/Student/5
+        [HttpDelete]
         public IHttpActionResult Delete(int? id)
         {
             if (id == null)
@@ -100,11 +100,11 @@ namespace WEB_NNINO_2.Controllers
 
             try
             {
-                var studentDTO = StudentService.GetItemAsync(id);
-                //if (studentDTO == null)
-                //    throw new HttpResponseException(System.Net.HttpStatusCode.NotFound);
+                var studentDTO = StudentService.GetItem(id);
+                if (studentDTO == null)
+                    throw new HttpResponseException(System.Net.HttpStatusCode.NotFound);
 
-                StudentService.DeleteItem(id);
+                Task.Run(() => StudentService.DeleteItem(id));
             }
             catch (System.Exception)
             {

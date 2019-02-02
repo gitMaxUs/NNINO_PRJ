@@ -78,11 +78,18 @@
     <Compile Include="Migrations\201902021251155_LaizyLoading.Designer.cs">
       <DependentUpon>201902021251155_LaizyLoading.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201902021352272_EditEntities.cs" />
+    <Compile Include="Migrations\201902021352272_EditEntities.Designer.cs">
+      <DependentUpon>201902021352272_EditEntities.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201902021636437_EditEntities2.cs" />
+    <Compile Include="Migrations\201902021636437_EditEntities2.Designer.cs">
+      <DependentUpon>201902021636437_EditEntities2.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Repositories\EFGenericRepository.cs" />
     <Compile Include="Repositories\IGenericRepository.cs" />
-    <Compile Include="Repositories\NoGeneric\StudentRepository.cs" />
     <Compile Include="UOW\EFUnitOfWork.cs" />
     <Compile Include="UOW\IUnitOFWork.cs" />
   </ItemGroup>
@@ -108,6 +115,12 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201902021251155_LaizyLoading.resx">
       <DependentUpon>201902021251155_LaizyLoading.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201902021352272_EditEntities.resx">
+      <DependentUpon>201902021352272_EditEntities.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201902021636437_EditEntities2.resx">
+      <DependentUpon>201902021636437_EditEntities2.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

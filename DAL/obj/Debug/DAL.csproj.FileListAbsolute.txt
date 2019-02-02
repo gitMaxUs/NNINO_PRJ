@@ -44,7 +44,6 @@ C:\Users\HP\GitRepositories\NNINO_PRJ\DAL\bin\Debug\EntityFramework.dll
 C:\Users\HP\GitRepositories\NNINO_PRJ\DAL\bin\Debug\EntityFramework.SqlServer.dll
 C:\Users\HP\GitRepositories\NNINO_PRJ\DAL\bin\Debug\EntityFramework.xml
 C:\Users\HP\GitRepositories\NNINO_PRJ\DAL\bin\Debug\EntityFramework.SqlServer.xml
-C:\Users\HP\GitRepositories\NNINO_PRJ\DAL\obj\Debug\DAL.csprojAssemblyReference.cache
 C:\Users\HP\GitRepositories\NNINO_PRJ\DAL\obj\Debug\DAL.Migrations.RemoveForigenKeyAtribute.resources
 C:\Users\HP\GitRepositories\NNINO_PRJ\DAL\obj\Debug\DAL.Migrations.ForigenKeyAtribute2.resources
 C:\Users\HP\GitRepositories\NNINO_PRJ\DAL\obj\Debug\DAL.Migrations.ForigenKeyAtribute3.resources
@@ -55,3 +54,5 @@ C:\Users\HP\GitRepositories\NNINO_PRJ\DAL\obj\Debug\DAL.csproj.CopyComplete
 C:\Users\HP\GitRepositories\NNINO_PRJ\DAL\obj\Debug\DAL.dll
 C:\Users\HP\GitRepositories\NNINO_PRJ\DAL\obj\Debug\DAL.pdb
 C:\Users\HP\GitRepositories\NNINO_PRJ\DAL\obj\Debug\DAL.Migrations.LaizyLoading.resources
+C:\Users\HP\GitRepositories\NNINO_PRJ\DAL\obj\Debug\DAL.Migrations.EditEntities.resources
+C:\Users\HP\GitRepositories\NNINO_PRJ\DAL\obj\Debug\DAL.Migrations.EditEntities2.resources

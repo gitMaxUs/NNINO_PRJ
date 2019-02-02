@@ -7,9 +7,9 @@ namespace DAL.Repositories
 {
     public interface IGenericRepository<TEntity> where TEntity : class
     {
-        Task<IEnumerable<TEntity>> GetAll();
+        IEnumerable<TEntity> GetAll();
 
-        Task<TEntity> Get(int id);
+        TEntity Get(int id);
 
         void Create(TEntity item);
 
