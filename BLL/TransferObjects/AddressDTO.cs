@@ -2,9 +2,8 @@
 
 namespace DAL.Entities
 {
-    public class Address
-    {
-        [Key]
+    class AddressDTO
+    { 
         public int Id { get; set; }
 
         public string StreetAddress { get; set; }

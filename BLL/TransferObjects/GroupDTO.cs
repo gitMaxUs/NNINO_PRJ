@@ -10,6 +10,6 @@ namespace BL.TransferObjects
         public int Id { get; set; }
         public string GroupName { get; set; }
 
-        public ICollection<StudentDTO> Students { get; set; }
+      //  public ICollection<StudentDTO> Students { get; set; }
     }
 }

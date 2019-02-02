@@ -15,7 +15,8 @@ namespace DAL.Entities
         [MaxLength(12)]
         public string Surname { get; set; }
 
-        
+        public string Email { get; set; }
+
         public int? LessonId { get; set; }
         public Lesson Lesson { get; set; }         
     }

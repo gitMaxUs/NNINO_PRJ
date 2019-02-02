@@ -26,10 +26,12 @@ namespace DAL.Entities
         [MaxLength(15)]
         public string PerentPhoneNumber { get; set; }
 
+        public string Email { get; set; }
 
         // [Required]
-        [MaxLength(60)]
-        public string Adress { get; set; }
+        // [MaxLength(60)]
+        public int? AddressId { get; set; }
+        public Address Adress { get; set; }
         
 
         public int? GroupId { get; set; } 

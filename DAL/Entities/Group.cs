@@ -15,6 +15,6 @@ namespace DAL.Entities
         public string GroupName { get; set; }
 
          
-        public  ICollection<Student> Students { get; set; }       
+        public virtual ICollection<Student> Students { get; set; }       
     }
 }

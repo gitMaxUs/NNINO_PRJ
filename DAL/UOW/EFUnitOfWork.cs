@@ -11,15 +11,12 @@ namespace DAL.UOW
         private EFGenericRepository<Group> GroupRepository;
         private EFGenericRepository<Lesson> LessonRepository;
 
-        //public EFUnitOfWork(EFContext Context_nnino)
-        //{
-        //    DB_Context = Context_nnino;
-        //}
 
         public EFUnitOfWork(string connectionString)
         {
             DB_Context = new EFContext(connectionString);
         }
+
 
         public IGenericRepository<Student> StudentsUOW
         {
@@ -61,7 +58,6 @@ namespace DAL.UOW
         public async void SaveAsync()
         {
             await DB_Context.SaveChangesAsync();
-            // DB_Context.SaveChanges();
         }
     }
 }

@@ -26,14 +26,12 @@ namespace DAL.Repositories
         {
             var result = await DBEntity.ToListAsync();
             return result;
-            // return  DBEntity.ToList();
         }
 
         public async Task<TEntity> Get(int id)
         {
             var result = await DBEntity.FindAsync(id);
             return result;
-            //  return DBEntity.Find(id);
         }
 
         public void Create(TEntity item)

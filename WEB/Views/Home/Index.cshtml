@@ -25,15 +25,15 @@
 
             GetAllBooks();
 
-            $("#editBook").click(function (event) {
-                event.preventDefault();
-                EditBook();
-            });
+            //$("#editBook").click(function (event) {
+            //    event.preventDefault();
+            //    EditBook();
+            //});
 
-            $("#addBook").click(function (event) {
-                event.preventDefault();
-                AddBook();
-            });
+            //$("#addBook").click(function (event) {
+            //    event.preventDefault();
+            //    AddBook();
+            //});
 
         });
         // Получение всех книг по ajax-запросу
@@ -58,8 +58,8 @@
             // получаем значения для добавляемой книги
             var book = {
                 Name: $('#addName').val(),
-                Author: $('#addAuthor').val(),
-                Year: $('#addYear').val()
+                Surname: $('#addAuthor').val(),
+                Groupe: $('#addYear').val()     //типу того тіки спочатку передає через слої прілложухи
             };
 
             $.ajax({
@@ -112,11 +112,11 @@
             });
         }
         // вывод полученных данных на экран
-        function WriteResponse(books) {
+        function WriteResponse(students) {
             var strResult = "<table><th>ID</th><th>Название</th><th>Автор</th><th>Год издания</th>";
-            $.each(books, function (index, book) {
-                strResult += "<tr><td>" + book.Name + "</td><td>" +
-                    book.Surname     ;
+            $.each(students, function (index, student) {
+                strResult += "<tr><td>" + student.Name + "</td><td>" +
+                    student.Surname     ;
             });
             strResult += "</table>";
             $("#tableBlock").html(strResult);

@@ -2,6 +2,6 @@
 {
     public static  class DBConnection
     {
-        public static readonly string ConnectionString = "NNINO_DB";
+        public static readonly string ConnectionString = "DefaultConnection";
     }
 }

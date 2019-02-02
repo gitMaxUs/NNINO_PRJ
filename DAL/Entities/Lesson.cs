@@ -15,6 +15,6 @@ namespace DAL.Entities
         public int? TeacherId { get; set; }
         public Teacher Teacher { get; set; }
 
-        public ICollection<ConcreteLesson> ConcreteLesson { get; set; }
+        public virtual ICollection<ConcreteLesson> ConcreteLesson { get; set; }
     }
 }
