@@ -20,7 +20,7 @@ namespace DAL.UOW
         }
 
 
-        public IGenericRepository<Student> StudentsUOW
+        public IGenericRepository<Student> StudentUOW
         {
             get
             {
@@ -30,7 +30,7 @@ namespace DAL.UOW
             }
         }
 
-        public IGenericRepository<Teacher> TeacersUOW
+        public IGenericRepository<Teacher> TeacherUOW
         {
             get
             {
@@ -89,6 +89,8 @@ namespace DAL.UOW
                 return ConcreteLessonRepository;
             }
         }
+        
+        
 
         public void Save()
         {

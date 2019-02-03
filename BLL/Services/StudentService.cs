@@ -1,5 +1,5 @@
 ﻿using AutoMapper;
-using BL.TransferObjects;
+using BLL.TransferObjects;
 using BLL.Interfaces;
 using DAL.Entities;
 using DAL.UOW;
@@ -26,7 +26,7 @@ namespace BL.Services
 
         public IEnumerable<StudentDTO> GetItems()
         {
-            IEnumerable<Student> students = UnitOfWork.StudentsUOW.GetAll();
+            IEnumerable<Student> students = UnitOfWork.StudentUOW.GetAll();
 
             var mapper = new MapperConfiguration(cfg => cfg.CreateMap<Student, StudentDTO>()).CreateMapper();
             return mapper.Map<IEnumerable<Student>, List<StudentDTO>>(students);
@@ -39,16 +39,16 @@ namespace BL.Services
 
             var mapper = new MapperConfiguration(cfg => cfg.CreateMap<StudentDTO, Student>()).CreateMapper();
             var student = mapper.Map<StudentDTO, Student>(instanceDTO);
-            UnitOfWork.StudentsUOW.Create(student);
+            UnitOfWork.StudentUOW.Create(student);
             UnitOfWork.Save();
         }
 
         public void DeleteItem(int? id)
         {
-            var student =  UnitOfWork.StudentsUOW.Get(id.Value);
+            var student =  UnitOfWork.StudentUOW.Get(id.Value);
             if (student != null)
             {
-                UnitOfWork.StudentsUOW.Delete(id);
+                UnitOfWork.StudentUOW.Delete(id);
                 UnitOfWork.Save(); 
             }
             else throw new Exception();
@@ -63,7 +63,7 @@ namespace BL.Services
             var mapper = new MapperConfiguration(cfg => cfg.CreateMap<StudentDTO, Student>()).CreateMapper();
             var student = mapper.Map<StudentDTO, Student>(instanceDTO);
 
-            UnitOfWork.StudentsUOW.Update(student);
+            UnitOfWork.StudentUOW.Update(student);
             UnitOfWork.Save();
         }
 
@@ -72,7 +72,7 @@ namespace BL.Services
             if (id == null)
                 throw new ArgumentNullException();
 
-            Student student = UnitOfWork.StudentsUOW.Get(id.Value);
+            Student student = UnitOfWork.StudentUOW.Get(id.Value);
 
             if (student == null)
                 throw new ArgumentNullException();

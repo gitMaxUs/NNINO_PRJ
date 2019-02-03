@@ -13,8 +13,13 @@ namespace DAL.Entities
 
         public string Description { get; set; }
 
+        public DateTime Date { get; set; }
+
 
         public int? LessonId { get; set; }
         public Lesson Lesson { get; set; }
+
+        public int? teacherId { get; set; }
+        public Teacher teacher { get; set; }
     }
 }

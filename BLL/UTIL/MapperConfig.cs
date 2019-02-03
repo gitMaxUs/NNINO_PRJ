@@ -1,5 +1,5 @@
 ﻿using AutoMapper;
-using BL.TransferObjects;
+using BLL.TransferObjects;
 using DAL.Entities;
 
 namespace BL

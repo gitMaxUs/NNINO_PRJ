@@ -1,4 +1,4 @@
-﻿using BL.TransferObjects;
+﻿using BLL.TransferObjects; 
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -13,7 +13,8 @@ namespace BLL.Interfaces
 
         IEnumerable<TeacherDTO> GetTeachers();
 
-        //void NotifyStudentProblem(StudentDTO student);
-        
+        //void NotifyStudentProblem(StudentDTO student);    
+
+        IEnumerable<ProblemStudentDTO> GetStudentsWithProblems();
     }
 }

@@ -1,24 +1,27 @@
-﻿using BL.TransferObjects;
+﻿using BLL.TransferObjects;
+using DAL.Entities;
 using System;
 using System.Collections.Generic;
-using System.Text;
 
 namespace BL.Interfaces
 {
     public interface ITeacherService
     {
-        void NewLesson();
 
-        void ChangeLessonsTopic();
+        bool AddNewLesson(int? teacherId, string description);
 
-        void ChackPresentStudents(LessonDTO lesson, IEnumerable<StudentDTO> studentsList);
+        //void ChangeLessonsTopic();
 
-        void ChackStudentAsSick(int? id);
+        //void MarkPresentStudents(LessonDTO lesson, IEnumerable<StudentDTO> studentsList);
 
-        void ChackStdentAsImportantReason(int? id);
+        //void MarkStudentAsSick(int? id);
 
-        void SetLessonsDate();
+        //void MarkStdentAsImportantReason(int? id);
+         
 
+        bool AddEmptyStudent(int? _studentId);
+
+        
 
         IEnumerable<StudentDTO> ShowStudentListBySelectedGroup(GroupDTO group);
 

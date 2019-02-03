@@ -18,6 +18,6 @@ namespace DAL.Entities
         public string Email { get; set; }
 
         public int? LessonId { get; set; }
-        public Lesson Lesson { get; set; }         
+        public Lesson Lesson { get; set; }          
     }
 }

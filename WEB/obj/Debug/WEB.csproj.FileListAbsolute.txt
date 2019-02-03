@@ -207,3 +207,5 @@ C:\Users\HP\GitRepositories\NNINO_PRJ\WEB\obj\Debug\WEB.csproj.CopyComplete
 C:\Users\HP\GitRepositories\NNINO_PRJ\WEB\obj\Debug\WEB_NNINO_2.dll
 C:\Users\HP\GitRepositories\NNINO_PRJ\WEB\obj\Debug\WEB_NNINO_2.pdb
 C:\Users\HP\GitRepositories\NNINO_PRJ\WEB\bin\WebActivatorEx.dll
+C:\Users\HP\GitRepositories\NNINO_PRJ\WEB\bin\WEB_NNINO_2.dll.CodeAnalysisLog.xml
+C:\Users\HP\GitRepositories\NNINO_PRJ\WEB\bin\WEB_NNINO_2.dll.lastcodeanalysissucceeded

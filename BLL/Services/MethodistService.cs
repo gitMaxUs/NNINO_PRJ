@@ -1,14 +1,11 @@
-﻿using BL.Interfaces;
-using BL.TransferObjects;
+﻿using AutoMapper;
+using BL.Interfaces;
 using BLL.Interfaces;
+using BLL.TransferObjects;
 using DAL.Entities;
+using DAL.UOW;
 using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using DAL.UOW;
-using AutoMapper;
 
 namespace BLL.Services
 {
@@ -29,7 +26,7 @@ namespace BLL.Services
 
         public IEnumerable<StudentDTO> GetItems()
         {
-            IEnumerable<Student> students = UnitOfWork.StudentsUOW.GetAll();
+            IEnumerable<Student> students = UnitOfWork.StudentUOW.GetAll();
 
             var mapper = new MapperConfiguration(cfg => cfg.CreateMap<Student, StudentDTO>()).CreateMapper();
             return mapper.Map<IEnumerable<Student>, List<StudentDTO>>(students);
@@ -42,16 +39,16 @@ namespace BLL.Services
 
             var mapper = new MapperConfiguration(cfg => cfg.CreateMap<StudentDTO, Student>()).CreateMapper();
             var student = mapper.Map<StudentDTO, Student>(instanceDTO);
-            UnitOfWork.StudentsUOW.Create(student);
+            UnitOfWork.StudentUOW.Create(student);
             UnitOfWork.Save();
         }
 
         public void DeleteItem(int? id)
         {
-            var student = UnitOfWork.StudentsUOW.Get(id.Value);
+            var student = UnitOfWork.StudentUOW.Get(id.Value);
             if (student != null)
             {
-                UnitOfWork.StudentsUOW.Delete(id);
+                UnitOfWork.StudentUOW.Delete(id);
                 UnitOfWork.Save();
             }
             else throw new Exception();
@@ -66,7 +63,7 @@ namespace BLL.Services
             var mapper = new MapperConfiguration(cfg => cfg.CreateMap<StudentDTO, Student>()).CreateMapper();
             var student = mapper.Map<StudentDTO, Student>(instanceDTO);
 
-            UnitOfWork.StudentsUOW.Update(student);
+            UnitOfWork.StudentUOW.Update(student);
             UnitOfWork.Save();
         }
 
@@ -75,7 +72,7 @@ namespace BLL.Services
             if (id == null)
                 throw new ArgumentNullException();
 
-            Student student = UnitOfWork.StudentsUOW.Get(id.Value);
+            Student student = UnitOfWork.StudentUOW.Get(id.Value);
 
             if (student == null)
                 throw new ArgumentNullException();
@@ -84,16 +81,41 @@ namespace BLL.Services
             return (mapper.Map<Student, StudentDTO>(student));
         }
 
-
-
+    
         public IEnumerable<StudentDTO> GetStudents(GroupDTO group)
         {
-            throw new NotImplementedException();
+            IEnumerable<Student> students = UnitOfWork.StudentUOW.GetAll();
+
+            var mapper = new MapperConfiguration(cfg => cfg.CreateMap<Student, StudentDTO>()).CreateMapper();
+            return mapper.Map<IEnumerable<Student>, List<StudentDTO>>(students);
         }
 
+
+        /// <summary>
+        /// Returns List of Teachers
+        /// </summary>
+        /// <returns></returns>
         public IEnumerable<TeacherDTO> GetTeachers()
         {
-            throw new NotImplementedException();
+            IEnumerable<Teacher> teachers = UnitOfWork.TeacherUOW.GetAll();
+
+            var mapper = new MapperConfiguration(cfg => cfg.CreateMap<Teacher, TeacherDTO>()).CreateMapper();
+            return mapper.Map<IEnumerable<Teacher>, List<TeacherDTO>>(teachers);
+        }
+
+        /// <summary>
+        /// Returns students that have lots of skipped lessons
+        /// </summary>
+        /// <returns></returns>a
+        public IEnumerable<ProblemStudentDTO> GetStudentsWithProblems()
+        {
+            IEnumerable<Student> students = UnitOfWork.StudentUOW.GetAll();
+            IEnumerable<ProblemStudent> problemStudents = UnitOfWork.ProblemStudentUOW.GetAll();
+             
+           
+            var mapper = new MapperConfiguration(cfg => cfg.CreateMap<ProblemStudent, ProblemStudentDTO>()).CreateMapper();
+            return mapper.Map<IEnumerable<ProblemStudent>, IEnumerable<ProblemStudentDTO>>(problemStudents);
+ 
         }
     }
 }

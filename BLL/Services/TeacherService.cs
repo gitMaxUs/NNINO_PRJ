@@ -1,6 +1,6 @@
 ﻿using AutoMapper;
 using BL.Interfaces;
-using BL.TransferObjects;
+using BLL.TransferObjects;
 using DAL.Entities;
 using DAL.UOW;
 using System;
@@ -13,15 +13,16 @@ namespace BLL.Services
 {
     class TeacherService //: ITeacherService
     {
-        EFUnitOfWork UnitOfWork { get; set; } 
+        private readonly int maxTimeStudentCanSkippClasses = 5;
+        private string NoteAboutStudent = "Не був присутній на занятті";
+
+
+        EFUnitOfWork UnitOfWork { get; set; }
 
         public TeacherService(string connectionString)
         {
             UnitOfWork = new EFUnitOfWork(connectionString);
         }
-        private readonly int maxTimeStudentCanSkippClasses = 5;
-        private string NoteAboutStudent = "Не був присутній на занятті";
-
 
 
         /// <summary>
@@ -36,15 +37,15 @@ namespace BLL.Services
                 if (_studentId == null)
                     throw new ArgumentNullException();
 
-                Student student = UnitOfWork.StudentsUOW.Get(_studentId.Value); //Get student from DB
+                Student student = UnitOfWork.StudentUOW.Get(_studentId.Value); //Get student from DB
 
                 if (student == null)                                            //Chack if studfent reference is not null, if he is realy in DB
                     throw new ArgumentNullException();
 
 
                 IEnumerable<PresetStudent> presetStudents = UnitOfWork.PresetStudentUOW.GetAll();   //Get students that was not on lectures
-                           
-                PresetStudent presetStudent = null; 
+
+                PresetStudent presetStudent = null;
 
                 foreach (var item in presetStudents)
                 {
@@ -59,14 +60,14 @@ namespace BLL.Services
                 {
                     UnitOfWork.ProblemStudentUOW.Create(new ProblemStudent()                //if student skipp ore lesson than allowed, student adds to ProblemStudent Table 
                     {                                                                       //where Methodist can do somethig with him
-                        Student = UnitOfWork.StudentsUOW.Get(_studentId.Value),            
+                        Student = UnitOfWork.StudentUOW.Get(_studentId.Value),
                         Note = NoteAboutStudent
                     });
-                } 
+                }
                 else
                 {
                     presetStudent.CountOfSkippedClasses++;      //Add one more skiped class
-                    UnitOfWork.StudentsUOW.Update(student);                 //Update model                       
+                    UnitOfWork.StudentUOW.Update(student);                 //Update model                       
                 }
 
                 UnitOfWork.Save();
@@ -90,7 +91,7 @@ namespace BLL.Services
             bool status;
             try
             {
-                Teacher teacher = UnitOfWork.TeacersUOW.Get(teacherId.Value);
+                Teacher teacher = UnitOfWork.TeacherUOW.Get(teacherId.Value);
                 Lesson lesson = UnitOfWork.LessonUOW.Get(teacher.LessonId.Value);
 
                 ConcreteLesson concretelesson = new ConcreteLesson()
@@ -107,6 +108,35 @@ namespace BLL.Services
                 status = false;
             }
             return status;
+        }
+
+        /// <summary>
+        /// create new instance of concrectLesson
+        /// </summary>
+        bool AddNewLesson(int? teacherId, string description)
+        {
+            bool state = false;
+            try
+            {
+                Teacher _teacher = UnitOfWork.TeacherUOW.Get(teacherId.Value);
+                _teacher.Lesson.ConcreteLesson.Add(new ConcreteLesson()
+                {
+                    Date = DateTime.Now,
+                    teacher = _teacher,
+                    Lesson = _teacher.Lesson,
+                    LessonId = _teacher.Lesson.Id,
+                    teacherId = _teacher.Id,
+                    Description = description
+                });
+                UnitOfWork.Save();
+                state = true;
+            }
+            catch (Exception)
+            {
+                state = false;
+                throw;
+            } 
+            return state;           
         }
     }
 }

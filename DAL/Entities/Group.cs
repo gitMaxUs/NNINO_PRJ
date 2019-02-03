@@ -7,8 +7,7 @@ namespace DAL.Entities
         public Group()
         {
             Students = new List<Student>();
-        }
-
+        } 
 
         public int Id { get; set; }
 

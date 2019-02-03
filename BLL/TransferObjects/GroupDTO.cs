@@ -1,9 +1,9 @@
-﻿using BL.TransferObjects;
+﻿using BLL.TransferObjects;
 using System;
 using System.Collections.Generic;
 using System.Text;
 
-namespace BL.TransferObjects
+namespace BLL.TransferObjects
 {
     public class GroupDTO
     {
