@@ -1,5 +1,4 @@
 ﻿using AutoMapper;
-using BL.Interfaces;
 using BLL.Interfaces;
 using BLL.TransferObjects;
 using DAL.Entities;
@@ -81,7 +80,11 @@ namespace BLL.Services
             return (mapper.Map<Student, StudentDTO>(student));
         }
 
-    
+        /// <summary>
+        /// returns list of students
+        /// </summary>
+        /// <param name="group"></param>
+        /// <returns></returns>
         public IEnumerable<StudentDTO> GetStudents(GroupDTO group)
         {
             IEnumerable<Student> students = UnitOfWork.StudentUOW.GetAll();
@@ -89,7 +92,6 @@ namespace BLL.Services
             var mapper = new MapperConfiguration(cfg => cfg.CreateMap<Student, StudentDTO>()).CreateMapper();
             return mapper.Map<IEnumerable<Student>, List<StudentDTO>>(students);
         }
-
 
         /// <summary>
         /// Returns List of Teachers
@@ -111,11 +113,11 @@ namespace BLL.Services
         {
             IEnumerable<Student> students = UnitOfWork.StudentUOW.GetAll();
             IEnumerable<ProblemStudent> problemStudents = UnitOfWork.ProblemStudentUOW.GetAll();
-             
-           
+
+
             var mapper = new MapperConfiguration(cfg => cfg.CreateMap<ProblemStudent, ProblemStudentDTO>()).CreateMapper();
             return mapper.Map<IEnumerable<ProblemStudent>, IEnumerable<ProblemStudentDTO>>(problemStudents);
- 
+
         }
     }
 }

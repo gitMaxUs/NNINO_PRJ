@@ -108,10 +108,10 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
-    <None Include="Entities\EnitiesClassDiagram.cd" />
+    <None Include="ClassDiagram\EnitiesClassDiagram.cd" />
     <None Include="packages.config" />
-    <None Include="Repositories\RepositoriesClassDiagram1.cd" />
-    <None Include="UOW\UOWClassDiagram.cd" />
+    <None Include="ClassDiagram\RepositoriesClassDiagram1.cd" />
+    <None Include="ClassDiagram\UOWClassDiagram.cd" />
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Include="Migrations\201901311837211_RemoveForigenKeyAtribute.resx">
@@ -145,5 +145,6 @@
       <DependentUpon>201902032048563_addAddressToTeacherEntity.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

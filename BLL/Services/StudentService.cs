@@ -1,15 +1,14 @@
 ﻿using AutoMapper;
-using BLL.TransferObjects;
 using BLL.Interfaces;
+using BLL.TransferObjects;
 using DAL.Entities;
 using DAL.UOW;
 using System;
 using System.Collections.Generic;
-using System.Threading.Tasks;
 
 namespace BLL.Services
 {
-    public class StudentService : IStudentService
+    public class StudentService : IStudentService, IGenericService<StudentDTO>
     {
 
         EFUnitOfWork UnitOfWork { get; set; }
@@ -80,7 +79,5 @@ namespace BLL.Services
             var mapper = new MapperConfiguration(cfg => cfg.CreateMap<Student, StudentDTO>()).CreateMapper();
             return  (mapper.Map<Student, StudentDTO>(student));
         }
-
-
     }
 }

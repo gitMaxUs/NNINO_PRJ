@@ -1,17 +1,14 @@
 ﻿using AutoMapper;
-using BL.Interfaces;
+using BLL.Interfaces;
 using BLL.TransferObjects;
 using DAL.Entities;
 using DAL.UOW;
 using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace BLL.Services
 {
-    class TeacherService //: ITeacherService
+    class TeacherService : ITeacherService
     {
         private readonly int maxTimeStudentCanSkippClasses = 5;
         private string NoteAboutStudent = "Не був присутній на занятті";
@@ -86,7 +83,7 @@ namespace BLL.Services
         /// <param name="them"></param>
         /// <param name="lessonDate"></param>
         /// <param name="teacher"></param>
-        bool NewThemOfTheLesson(string them, DateTime lessonDate, int? teacherId)
+        bool ITeacherService.NewThemOfTheLesson(string them, DateTime lessonDate, int? teacherId)
         {
             bool status;
             try
@@ -113,7 +110,7 @@ namespace BLL.Services
         /// <summary>
         /// create new instance of concrectLesson
         /// </summary>
-        bool AddNewLesson(int? teacherId, string description)
+        bool ITeacherService.AddNewLesson(int? teacherId, string description)
         {
             bool state = false;
             try
@@ -135,8 +132,34 @@ namespace BLL.Services
             {
                 state = false;
                 throw;
-            } 
-            return state;           
+            }
+            return state;
+        }
+
+
+        public IEnumerable<StudentDTO> ShowStudentListBySelectedGroup(int? _groupId)
+        {
+            IEnumerable<Student> students = UnitOfWork.StudentUOW.GetAll();
+            List<Student> selectedStudents = null;
+            foreach (var item in students)
+            {
+                if (item.GroupId == _groupId)
+                    selectedStudents.Add(item);
+            }
+
+            var mapper = new MapperConfiguration(cfg => cfg.CreateMap<Student, StudentDTO>()).CreateMapper();
+            return mapper.Map<IEnumerable<Student>, List<StudentDTO>>(selectedStudents);
+        }
+
+
+        /// <summary>
+        /// returns list of groups
+        /// </summary>
+        /// <returns></returns>
+        public IEnumerable<GroupDTO> GetGroups()
+        {
+            var mapper = new MapperConfiguration(cfg => cfg.CreateMap<Group, GroupDTO>()).CreateMapper();
+            return mapper.Map<IEnumerable<Group>, IEnumerable<GroupDTO>>(UnitOfWork.GroupUOW.GetAll());
         }
     }
 }

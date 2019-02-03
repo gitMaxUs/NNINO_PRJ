@@ -1,14 +1,13 @@
 ﻿using BLL.TransferObjects;
-using DAL.Entities;
 using System;
 using System.Collections.Generic;
 
-namespace BL.Interfaces
+namespace BLL.Interfaces
 {
     public interface ITeacherService
     {
 
-        bool AddNewLesson(int? teacherId, string description);
+        //  bool AddEmptyStudent(int? _studentId);
 
         //void ChangeLessonsTopic();
 
@@ -17,15 +16,13 @@ namespace BL.Interfaces
         //void MarkStudentAsSick(int? id);
 
         //void MarkStdentAsImportantReason(int? id);
-         
 
-        bool AddEmptyStudent(int? _studentId);
+        bool NewThemOfTheLesson(string them, DateTime lessonDate, int? teacherId);
 
-        
+        bool AddNewLesson(int? teacherId, string description);
 
-        IEnumerable<StudentDTO> ShowStudentListBySelectedGroup(GroupDTO group);
+        IEnumerable<StudentDTO> ShowStudentListBySelectedGroup(int? _groupId);
 
-        IEnumerable<GroupDTO> ShowGroups();
-
+        IEnumerable<GroupDTO> GetGroups();
     }
 }
