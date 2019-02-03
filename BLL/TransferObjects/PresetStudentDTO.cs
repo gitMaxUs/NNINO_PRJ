@@ -4,7 +4,7 @@ using System.Text;
 
 namespace BL.TransferObjects
 {
-    public class PresetStudent
+    public class PresetStudentDTO
     {
         public bool Present { get; set; }
         public DateTime Date { get; set; }

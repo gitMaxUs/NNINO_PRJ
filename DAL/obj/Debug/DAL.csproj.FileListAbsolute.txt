@@ -56,3 +56,5 @@ C:\Users\HP\GitRepositories\NNINO_PRJ\DAL\obj\Debug\DAL.pdb
 C:\Users\HP\GitRepositories\NNINO_PRJ\DAL\obj\Debug\DAL.Migrations.LaizyLoading.resources
 C:\Users\HP\GitRepositories\NNINO_PRJ\DAL\obj\Debug\DAL.Migrations.EditEntities.resources
 C:\Users\HP\GitRepositories\NNINO_PRJ\DAL\obj\Debug\DAL.Migrations.EditEntities2.resources
+C:\Users\HP\GitRepositories\NNINO_PRJ\DAL\obj\Debug\DAL.Migrations.ChangesEntityAddPStud.resources
+C:\Users\HP\GitRepositories\NNINO_PRJ\DAL\obj\Debug\DAL.Migrations.ChangesEntityAddPStud1.resources

@@ -1,5 +1,8 @@
-﻿using BL.Interfaces;
+﻿using AutoMapper;
+using BL.Interfaces;
 using BL.TransferObjects;
+using DAL.Entities;
+using DAL.UOW;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -10,6 +13,100 @@ namespace BLL.Services
 {
     class TeacherService //: ITeacherService
     {
-        
+        EFUnitOfWork UnitOfWork { get; set; } 
+
+        public TeacherService(string connectionString)
+        {
+            UnitOfWork = new EFUnitOfWork(connectionString);
+        }
+        private readonly int maxTimeStudentCanSkippClasses = 5;
+        private string NoteAboutStudent = "Не був присутній на занятті";
+
+
+
+        /// <summary>
+        /// Add Student that is not on the lesson 
+        /// </summary>
+        /// <param name="_studentId"></param>        
+        bool AddEmptyStudent(int? _studentId)
+        {
+            bool status;
+            try
+            {
+                if (_studentId == null)
+                    throw new ArgumentNullException();
+
+                Student student = UnitOfWork.StudentsUOW.Get(_studentId.Value); //Get student from DB
+
+                if (student == null)                                            //Chack if studfent reference is not null, if he is realy in DB
+                    throw new ArgumentNullException();
+
+
+                IEnumerable<PresetStudent> presetStudents = UnitOfWork.PresetStudentUOW.GetAll();   //Get students that was not on lectures
+                           
+                PresetStudent presetStudent = null; 
+
+                foreach (var item in presetStudents)
+                {
+                    if (item.StudentId == _studentId.Value)         //looking for if student with given ID is in the database
+                        presetStudent = item;
+                }
+
+                if (presetStudent == null)
+                    throw new NullReferenceException();
+
+                if (presetStudent.CountOfSkippedClasses > maxTimeStudentCanSkippClasses)    //Looking if count of his skipped lessons is more then hecan skipp
+                {
+                    UnitOfWork.ProblemStudentUOW.Create(new ProblemStudent()                //if student skipp ore lesson than allowed, student adds to ProblemStudent Table 
+                    {                                                                       //where Methodist can do somethig with him
+                        Student = UnitOfWork.StudentsUOW.Get(_studentId.Value),            
+                        Note = NoteAboutStudent
+                    });
+                } 
+                else
+                {
+                    presetStudent.CountOfSkippedClasses++;      //Add one more skiped class
+                    UnitOfWork.StudentsUOW.Update(student);                 //Update model                       
+                }
+
+                UnitOfWork.Save();
+                status = true;
+            }
+            catch (Exception)
+            {
+                status = false;
+            }
+            return status;
+        }
+
+        /// <summary>
+        /// Create new Concrete Lesson thet takes them of lesson, date and teacher id
+        /// </summary>
+        /// <param name="them"></param>
+        /// <param name="lessonDate"></param>
+        /// <param name="teacher"></param>
+        bool NewThemOfTheLesson(string them, DateTime lessonDate, int? teacherId)
+        {
+            bool status;
+            try
+            {
+                Teacher teacher = UnitOfWork.TeacersUOW.Get(teacherId.Value);
+                Lesson lesson = UnitOfWork.LessonUOW.Get(teacher.LessonId.Value);
+
+                ConcreteLesson concretelesson = new ConcreteLesson()
+                {
+                    Description = them,
+                    Lesson = lesson
+                };
+
+                UnitOfWork.ConcreteLessonUOW.Create(concretelesson);
+                status = true;
+            }
+            catch (Exception)
+            {
+                status = false;
+            }
+            return status;
+        }
     }
 }

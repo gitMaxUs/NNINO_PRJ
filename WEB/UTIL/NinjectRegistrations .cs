@@ -1,10 +1,6 @@
-﻿//using BL_Layer_NNINO.Interfaces;
-//using BL_Layer_NNINO.Services;
+﻿//using BL.Services;
+//using BLL.Interfaces;
 //using Ninject.Modules;
-//using System;
-//using System.Collections.Generic;
-//using System.Linq;
-//using System.Web;
 
 //namespace WEB.UTIL
 //{
@@ -12,7 +8,7 @@
 //    {
 //        public override void Load()
 //        {
-//            Bind<IStudentService>().To<StudentService>();
+//            Bind<IStudentService>().To<StudentService>(); 
 //        }
 //    }
 //}

@@ -1,0 +1,169 @@
+﻿<div id="tableBlock"></div>
+
+@*<div id="editBlock">
+    <p><b>Редактирование книги</b></p>
+    <table>
+
+        <tr><td><input type="hidden" id="editId" /></td><td></td></tr>
+        <tr><td><label>Название 1: </label></td><td><input type="text" id="editName" /></td></tr>
+        <tr><td><label>Автор: </label></td><td><input type="text" id="editAuthor" /></td></tr>
+        <tr><td><label>Год: </label></td><td><input type="number" id="editYear" /></td></tr>
+
+    </table>
+    <button id="editStudent">Сохранить</button>
+</div>*@
+<div id="createblock">
+    <p><b>добавление книги</b></p>
+    <table>
+        <tr><td><label>название: </label></td><td><input type="text" id="addname" /></td></tr>
+        <tr><td><label>автор: </label></td><td><input type="text" id="addauthor" /></td></tr>
+        <tr><td><label>год: </label></td><td><input type="number" id="addyear" /></td></tr>
+    </table>
+    <button id="addstudent">сохранить</button>
+</div>
+@section scripts
+{
+    <script type="text/javascript">
+        $(document).ready(function () {
+
+            GetAllStudents();
+
+            $("#editStudent").click(function (event) {
+                event.preventDefault();
+                EditStudent();
+            });
+
+            $("#addStudent").click(function (event) {
+                event.preventDefault();
+                AddStudent();
+            });
+
+        });
+        // Получение всех книг по ajax-запросу
+        function GetAllStudents() {
+
+            $("#createBlock").css('display', 'block');
+            $("#editBlock").css('display', 'none');
+            $.ajax({
+                url: '/api/Methodist',
+                type: 'GET',
+                dataType: 'json',
+                success: function (data) {
+                    WriteResponse(data);
+                },
+                error: function (x, y, z) {
+                    alert(x + '\n' + y + '\n' + z);
+                }
+            });
+        }
+        // Добавление новой книги
+        function AddStudent() {
+            // получаем значения для добавляемой книги
+            var Student = {
+                Name: $('#addName').val(),
+                Surname: $('#addAuthor').val(),
+                Groupe: $('#addYear').val()     //типу того тіки спочатку передає через слої прілложухи
+            };
+
+            $.ajax({
+                url: '/api/Methodist/',
+                type: 'POST',
+                data: JSON.stringify(Student),
+                contentType: "application/json;charset=utf-8",
+                success: function (data) {
+                    GetAllStudents();
+                },
+                error: function (x, y, z) {
+                    alert(x + '\n' + y + '\n' + z);
+                }
+            });
+        }
+        // Удаление книги
+        function DeleteStudent(id) {
+
+            $.ajax({
+                url: '/api/Methodist/' + id,
+                type: 'DELETE',
+                contentType: "application/json;charset=utf-8",
+                success: function (data) {
+                    GetAllStudents();
+                },
+                error: function (x, y, z) {
+                    alert(x + '\n' + y + '\n' + z);
+                }
+            });
+        }
+        // редактирование книги
+        function EditStudent() {
+            var id = $('#editId').val()
+            // получаем новые значения для редактируемой книги
+            var Student = {
+                Surname: $('#editSurname').val(),
+                Name: $('#editName').val()
+            };
+            $.ajax({
+                url: '/api/Methodist/' + id,
+                type: 'PUT',
+                data: JSON.stringify(Student),
+                contentType: "application/json;charset=utf-8",
+                success: function (data) {
+                    GetAllStudents();
+                },
+                error: function (x, y, z) {
+                    alert(x + '\n' + y + '\n' + z);
+                }
+            });
+        }
+        // вывод полученных данных на экран
+        function WriteResponse(students) {
+            var strResult = "<table class='show-students'><th>ID</th><th>Название</th><th>Автор</th><th>Год издания</th>";
+            $.each(students, function (index, student) {
+                strResult += "<tr><td>" + student.Name + "</td><td>" + student.Surname;
+            });
+            strResult += "</table>";
+            $("#tableBlock").html(strResult);
+
+        }
+        // обработчик удаления
+        function DeleteItem(el) {
+            // получаем id удаляемого объекта
+            var id = $(el).attr('data-item');
+            DeleteStudent(id);
+        }
+        // обработчик редактирования
+        function EditItem(el) {
+            // получаем id редактируемого объекта
+            var id = $(el).attr('data-item');
+            GetStudent(id);
+        }
+        // вывод данных редактируемой книги в поля для редактирования
+        function ShowStudent(Student) {
+            if (Student != null) {
+                $("#createBlock").css('display', 'none');
+                $("#editBlock").css('display', 'block');
+                $("#editId").val(Student.Id);
+                $("#editName").val(Student.Name);
+                $("#editAuthor").val(Student.Author);
+                $("#editYear").val(Student.Year);
+            }
+            else {
+                alert("Такая книга не существует");
+            }
+        }
+        // запрос книги на редактирование
+        function GetStudent(id) {
+            $.ajax({
+                url: '/api/Methodist/' + id,
+                type: 'GET',
+                dataType: 'json',
+                success: function (data) {
+                    ShowStudent(data);
+                },
+                error: function (x, y, z) {
+                    alert(x + '\n' + y + '\n' + z);
+                }
+            });
+        }
+
+    </script>
+}

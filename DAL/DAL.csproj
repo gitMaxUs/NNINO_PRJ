@@ -55,6 +55,7 @@
     <Compile Include="Entities\Group.cs" />
     <Compile Include="Entities\Lesson.cs" />
     <Compile Include="Entities\PresetStudent.cs" />
+    <Compile Include="Entities\ProblemStudent.cs" />
     <Compile Include="Entities\Student.cs" />
     <Compile Include="Entities\Teacher.cs" />
     <Compile Include="Entities\ConcreteLesson.cs" />
@@ -85,6 +86,14 @@
     <Compile Include="Migrations\201902021636437_EditEntities2.cs" />
     <Compile Include="Migrations\201902021636437_EditEntities2.Designer.cs">
       <DependentUpon>201902021636437_EditEntities2.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201902031756026_ChangesEntityAddPStud.cs" />
+    <Compile Include="Migrations\201902031756026_ChangesEntityAddPStud.Designer.cs">
+      <DependentUpon>201902031756026_ChangesEntityAddPStud.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201902031806159_ChangesEntityAddPStud1.cs" />
+    <Compile Include="Migrations\201902031806159_ChangesEntityAddPStud1.Designer.cs">
+      <DependentUpon>201902031806159_ChangesEntityAddPStud1.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -121,6 +130,12 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201902021636437_EditEntities2.resx">
       <DependentUpon>201902021636437_EditEntities2.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201902031756026_ChangesEntityAddPStud.resx">
+      <DependentUpon>201902031756026_ChangesEntityAddPStud.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201902031806159_ChangesEntityAddPStud1.resx">
+      <DependentUpon>201902031806159_ChangesEntityAddPStud1.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

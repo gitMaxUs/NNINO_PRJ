@@ -10,7 +10,9 @@ namespace DAL.UOW
         private EFGenericRepository<Teacher> TeacherRepository;
         private EFGenericRepository<Group> GroupRepository;
         private EFGenericRepository<Lesson> LessonRepository;
-
+        private EFGenericRepository<ProblemStudent> ProblemStudentRepository;
+        private EFGenericRepository<PresetStudent> PresetStudentRepository;
+        private EFGenericRepository<ConcreteLesson> ConcreteLessonRepository;
 
         public EFUnitOfWork(string connectionString)
         {
@@ -27,6 +29,7 @@ namespace DAL.UOW
                 return StudentRepository;
             }
         }
+
         public IGenericRepository<Teacher> TeacersUOW
         {
             get
@@ -36,6 +39,7 @@ namespace DAL.UOW
                 return TeacherRepository;
             }
         }
+
         public IGenericRepository<Group> GroupUOW
         {
             get
@@ -45,6 +49,7 @@ namespace DAL.UOW
                 return GroupRepository;
             }
         }
+
         public IGenericRepository<Lesson> LessonUOW
         {
             get
@@ -52,6 +57,36 @@ namespace DAL.UOW
                 if (LessonRepository == null)
                     LessonRepository = new EFGenericRepository<Lesson>(DB_Context);
                 return LessonRepository;
+            }
+        }
+
+        public IGenericRepository<ProblemStudent> ProblemStudentUOW
+        {
+            get
+            {
+                if (ProblemStudentRepository == null)
+                    ProblemStudentRepository = new EFGenericRepository<ProblemStudent>(DB_Context);
+                return ProblemStudentRepository;
+            }
+        }
+
+        public IGenericRepository<PresetStudent> PresetStudentUOW
+        {
+            get
+            {
+                if (PresetStudentRepository == null)
+                    PresetStudentRepository = new EFGenericRepository<PresetStudent>(DB_Context);
+                return PresetStudentRepository;
+            }
+        }
+
+        public IGenericRepository<ConcreteLesson> ConcreteLessonUOW
+        {
+            get
+            {
+                if (ConcreteLessonRepository == null)
+                    ConcreteLessonRepository = new EFGenericRepository<ConcreteLesson>(DB_Context);
+                return ConcreteLessonRepository;
             }
         }
 

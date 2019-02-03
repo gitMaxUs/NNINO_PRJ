@@ -164,9 +164,6 @@ C:\Users\HP\GitRepositories\NNINO_PRJ\WEB\bin\Microsoft.AspNet.TelemetryCorrelat
 C:\Users\HP\GitRepositories\NNINO_PRJ\WEB\bin\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.dll
 C:\Users\HP\GitRepositories\NNINO_PRJ\WEB\bin\Microsoft.Web.Infrastructure.dll
 C:\Users\HP\GitRepositories\NNINO_PRJ\WEB\bin\Newtonsoft.Json.dll
-C:\Users\HP\GitRepositories\NNINO_PRJ\WEB\bin\Ninject.dll
-C:\Users\HP\GitRepositories\NNINO_PRJ\WEB\bin\Ninject.Web.Common.dll
-C:\Users\HP\GitRepositories\NNINO_PRJ\WEB\bin\Ninject.Web.WebApi.dll
 C:\Users\HP\GitRepositories\NNINO_PRJ\WEB\bin\System.Diagnostics.DiagnosticSource.dll
 C:\Users\HP\GitRepositories\NNINO_PRJ\WEB\bin\System.Net.Http.Formatting.dll
 C:\Users\HP\GitRepositories\NNINO_PRJ\WEB\bin\System.ValueTuple.dll
@@ -188,9 +185,6 @@ C:\Users\HP\GitRepositories\NNINO_PRJ\WEB\bin\AutoMapper.pdb
 C:\Users\HP\GitRepositories\NNINO_PRJ\WEB\bin\AutoMapper.xml
 C:\Users\HP\GitRepositories\NNINO_PRJ\WEB\bin\EntityFramework.xml
 C:\Users\HP\GitRepositories\NNINO_PRJ\WEB\bin\EntityFramework.SqlServer.xml
-C:\Users\HP\GitRepositories\NNINO_PRJ\WEB\bin\Ninject.xml
-C:\Users\HP\GitRepositories\NNINO_PRJ\WEB\bin\Ninject.Web.Common.xml
-C:\Users\HP\GitRepositories\NNINO_PRJ\WEB\bin\Ninject.Web.WebApi.xml
 C:\Users\HP\GitRepositories\NNINO_PRJ\WEB\bin\System.ValueTuple.xml
 C:\Users\HP\GitRepositories\NNINO_PRJ\WEB\bin\Newtonsoft.Json.xml
 C:\Users\HP\GitRepositories\NNINO_PRJ\WEB\bin\System.Net.Http.Formatting.xml
@@ -212,3 +206,4 @@ C:\Users\HP\GitRepositories\NNINO_PRJ\WEB\obj\Debug\WEB.csproj.CoreCompileInputs
 C:\Users\HP\GitRepositories\NNINO_PRJ\WEB\obj\Debug\WEB.csproj.CopyComplete
 C:\Users\HP\GitRepositories\NNINO_PRJ\WEB\obj\Debug\WEB_NNINO_2.dll
 C:\Users\HP\GitRepositories\NNINO_PRJ\WEB\obj\Debug\WEB_NNINO_2.pdb
+C:\Users\HP\GitRepositories\NNINO_PRJ\WEB\bin\WebActivatorEx.dll

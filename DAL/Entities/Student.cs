@@ -16,7 +16,7 @@ namespace DAL.Entities
         [MaxLength(12)]
         public string Surname { get; set; }
 
-      //  [Required]
+        //[Required]
         public string BirthDate { get; set; }
 
         //[Required]
@@ -32,12 +32,13 @@ namespace DAL.Entities
         // [MaxLength(60)]
         public int? AddressId { get; set; }
         public Address Adress { get; set; }
-        
 
-        public int? GroupId { get; set; } 
+
+        public int? GroupId { get; set; }
         public Group Group { get; set; }
 
-        //public int PresetStudentId { get; set; }
-        //public PresetStudent isPresentAtLesson { get; set; }
+
+        //public int? PresetStudentId { get; set; }
+        //public PresetStudent IsPresentOnLesson { get; set; }
     }
 }

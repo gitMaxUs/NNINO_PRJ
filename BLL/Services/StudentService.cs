@@ -1,5 +1,6 @@
 ﻿using AutoMapper;
 using BL.TransferObjects;
+using BLL.Interfaces;
 using DAL.Entities;
 using DAL.UOW;
 using System;
@@ -8,7 +9,7 @@ using System.Threading.Tasks;
 
 namespace BL.Services
 {
-    public class StudentService //: IStudentService
+    public class StudentService : IStudentService
     {
 
         EFUnitOfWork UnitOfWork { get; set; }
@@ -16,6 +17,11 @@ namespace BL.Services
         {
             UnitOfWork = new EFUnitOfWork(connectionString);
         }
+        //IUnitOFWork UnitOfWork { get; set; }
+        //public StudentService(IUnitOFWork _UnitOfWork)
+        //{
+        //    UnitOfWork = _UnitOfWork;
+        //}
 
 
         public IEnumerable<StudentDTO> GetItems()

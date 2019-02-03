@@ -1,16 +1,13 @@
-﻿using BL;
-using Ninject;
-using Ninject.Modules;
-using Ninject.Web.WebApi;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Web;
+﻿using BL.Util;
+//using Ninject;
+//using Ninject.Modules;
+//using Ninject.Web.Mvc;
+//using Ninject.Web.WebApi;
 using System.Web.Http;
 using System.Web.Mvc;
 using System.Web.Optimization;
 using System.Web.Routing;
-//using WEB.UTIL;
+using WEB.UTIL;
 
 namespace WEB
 {
@@ -25,8 +22,8 @@ namespace WEB
             BundleConfig.RegisterBundles(BundleTable.Bundles);
 
             //NinjectModule utilModulePL = new NinjectRegistrations();
-            //NinjectModule serviceModuleBL = new ServiceModule("NNINO_DB");//connectionString
-            //StandardKernel kernel = new StandardKernel(utilModulePL, serviceModuleBL);
+            //NinjectModule serviceModuleBL = new ServiceModule("DefaultConnection");//connectionString
+            //var kernel = new StandardKernel(utilModulePL, serviceModuleBL);
             //DependencyResolver.SetResolver(new NinjectDependencyResolver(kernel));
         }
     }

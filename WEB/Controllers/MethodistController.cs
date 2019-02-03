@@ -1,11 +1,8 @@
 ﻿using AutoMapper;
 using BL.Services;
 using BL.TransferObjects;
-using System;
+using BLL.Interfaces;
 using System.Collections.Generic;
-using System.Linq;
-using System.Net;
-using System.Net.Http;
 using System.Threading.Tasks;
 using System.Web.Http;
 using WEB.Models;
@@ -13,6 +10,8 @@ using WEB.UTIL;
 
 namespace WEB_NNINO_2.Controllers
 {
+    //[Authorize(Roles = "Admin")]
+    [RoutePrefix("api/Methodist")]
     public class MethodistController : ApiController
     {
         StudentService StudentService;
@@ -22,11 +21,17 @@ namespace WEB_NNINO_2.Controllers
             StudentService = new StudentService(DBConnection.ConnectionString);     // connection string Deffault Connection
         }
 
+        //IStudentService StudentService;
+        //public MethodistController(IStudentService serv)
+        //{
+        //    StudentService = serv;
+        //  //  StudentService = new StudentService(DBConnection.ConnectionString);     // connection string Deffault Connection
+        //}
 
         [HttpGet]
         public IHttpActionResult GetListOfStudents()
         {
-            IEnumerable<StudentDTO> studentDTO =  StudentService.GetItems();
+            IEnumerable<StudentDTO> studentDTO = StudentService.GetItems();
 
             if (studentDTO == null)
                 throw new HttpResponseException(System.Net.HttpStatusCode.NotFound);
@@ -34,7 +39,9 @@ namespace WEB_NNINO_2.Controllers
             return Ok(studentDTO);
         }
 
+        [AllowAnonymous]
         [HttpGet]
+        [Route("details/{id:int}")]
         public IHttpActionResult GetStudentById(int? id)
         {
             if (id == null)
@@ -54,6 +61,7 @@ namespace WEB_NNINO_2.Controllers
 
         //[HttpPost("upload")]
         [HttpPost]
+        [Route("details/{id:int}")]
         public IHttpActionResult CreateNewStudent([FromBody]StudentViewModel studentView)
         {
             if (!ModelState.IsValid)
@@ -72,6 +80,7 @@ namespace WEB_NNINO_2.Controllers
 
         // PUT: api/Student/5
         [HttpPut]
+
         public IHttpActionResult UpdateStudentById(int? id, [FromBody]StudentViewModel studentView)
         {
             if (!ModelState.IsValid)
@@ -82,7 +91,7 @@ namespace WEB_NNINO_2.Controllers
 
 
             StudentDTO item = StudentService.GetItem(id);       //get student by given id
-                                                                           // item.Id = studentView.Id;
+                                                                // item.Id = studentView.Id;
             item.Name = studentView.Name;
             item.Surname = studentView.Surname;
             StudentService.EditItem(item);

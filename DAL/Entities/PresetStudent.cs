@@ -1,15 +1,18 @@
 ﻿using System;
+using System.ComponentModel.DataAnnotations;
 
 namespace DAL.Entities
 {
     public class PresetStudent
     {
+        [Key]
         public int Id { get; set; }
 
         private bool studentIsSick;
         private bool studentHasReason;
         private bool studentHasNoReason;
 
+        public int CountOfSkippedClasses { get; set; } = 0;
         public bool StudentWasNotOnTheLesson { get; set; }
 
         public bool StudentSick
@@ -21,6 +24,7 @@ namespace DAL.Entities
                 {
                     StudentWasNotOnTheLesson = true;
                     studentIsSick = true;
+                    CountOfSkippedClasses++;
                 }
                 //else StudentWasNotOnTheLesson = false;
             }
@@ -34,6 +38,7 @@ namespace DAL.Entities
                 {
                     StudentWasNotOnTheLesson = true;
                     studentHasReason = true;
+                    CountOfSkippedClasses++;
                 }
                 //else StudentWasNotOnTheLesson = false;
             }
@@ -47,6 +52,7 @@ namespace DAL.Entities
                 {
                     StudentWasNotOnTheLesson = true;
                     studentHasNoReason = true;
+                    CountOfSkippedClasses++;
                 }
                 //else StudentWasNotOnTheLesson = false;
             }
@@ -56,6 +62,9 @@ namespace DAL.Entities
 
         public int? StudentId { get; set; }
         public Student Student { get; set; }
+
+        public int? ConcreteLessonId { get; set; }
+        public ConcreteLesson ConcreteLesson { get; set; }
 
         public string Note { get; set; }
     }
