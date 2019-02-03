@@ -7,7 +7,7 @@ using System;
 using System.Collections.Generic;
 using System.Threading.Tasks;
 
-namespace BL.Services
+namespace BLL.Services
 {
     public class StudentService : IStudentService
     {

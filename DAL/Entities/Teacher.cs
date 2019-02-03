@@ -3,7 +3,7 @@ using System.ComponentModel.DataAnnotations.Schema;
 
 namespace DAL.Entities
 {
-    public  class Teacher
+    public class Teacher
     {
         [Key]
         [ForeignKey("Lesson")]
@@ -17,7 +17,10 @@ namespace DAL.Entities
 
         public string Email { get; set; }
 
+        public int? AddressId { get; set; }
+        public Address Address { get; set; }
+
         public int? LessonId { get; set; }
-        public Lesson Lesson { get; set; }          
+        public Lesson Lesson { get; set; }
     }
 }

@@ -1,6 +1,6 @@
 ﻿using AutoMapper;
-using BL.Services;
-using BL.TransferObjects;
+using BLL.Services;
+using BLL.TransferObjects;
 using System;
 using System.Collections.Generic;
 using System.Web.Mvc;

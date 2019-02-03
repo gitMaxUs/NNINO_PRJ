@@ -1,6 +1,6 @@
 ﻿using AutoMapper;
-using BL.Services;
-using BL.TransferObjects;
+using BLL.Services;
+using BLL.TransferObjects;
 using BLL.Interfaces;
 using System.Collections.Generic;
 using System.Threading.Tasks;
