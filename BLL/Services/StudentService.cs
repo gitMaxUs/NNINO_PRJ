@@ -8,15 +8,14 @@ using System.Collections.Generic;
 
 namespace BLL.Services
 {
-    public class StudentService : IStudentService, IGenericService<StudentDTO>
+    public class StudentService : IStudentService
     {
-
         EFUnitOfWork UnitOfWork { get; set; }
         public StudentService(string connectionString)
         {
             UnitOfWork = new EFUnitOfWork(connectionString);
         }
-        //IUnitOFWork UnitOfWork { get; set; }
+
         //public StudentService(IUnitOFWork _UnitOfWork)
         //{
         //    UnitOfWork = _UnitOfWork;

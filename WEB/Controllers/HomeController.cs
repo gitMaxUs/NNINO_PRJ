@@ -1,4 +1,5 @@
 ﻿using AutoMapper;
+using BLL.Interfaces;
 using BLL.Services;
 using BLL.TransferObjects;
 using System;
@@ -17,7 +18,14 @@ namespace WEB.Controllers
         {
             StudentService = new StudentService(DBConnection.ConnectionString);     // connection string Deffault Connection
         }
+        //IStudentService StudentService;
+        //public HomeController(IStudentService serv)
+        //{
+        //    StudentService = serv;
+        //    //  StudentService = new StudentService(DBConnection.ConnectionString);     // connection string Deffault Connection
+        //}
 
+        //[Authorize(Roles = "admin")]
         public ActionResult Index()
         {
             //IEnumerable<StudentDTO> studentDTO;

@@ -9,6 +9,8 @@ namespace DAL.Entities
         [ForeignKey("Lesson")]
         public int Id { get; set; }
 
+        public string Position { get; set; }
+
         [MaxLength(10)]
         public string Name { get; set; }
 

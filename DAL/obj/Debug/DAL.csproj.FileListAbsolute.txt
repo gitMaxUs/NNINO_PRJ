@@ -58,5 +58,9 @@ C:\Users\HP\GitRepositories\NNINO_PRJ\DAL\obj\Debug\DAL.Migrations.EditEntities.
 C:\Users\HP\GitRepositories\NNINO_PRJ\DAL\obj\Debug\DAL.Migrations.EditEntities2.resources
 C:\Users\HP\GitRepositories\NNINO_PRJ\DAL\obj\Debug\DAL.Migrations.ChangesEntityAddPStud.resources
 C:\Users\HP\GitRepositories\NNINO_PRJ\DAL\obj\Debug\DAL.Migrations.ChangesEntityAddPStud1.resources
-C:\Users\HP\GitRepositories\NNINO_PRJ\DAL\obj\Debug\DAL.csprojAssemblyReference.cache
 C:\Users\HP\GitRepositories\NNINO_PRJ\DAL\obj\Debug\DAL.Migrations.addAddressToTeacherEntity.resources
+C:\Users\HP\GitRepositories\NNINO_PRJ\DAL\obj\Debug\DAL.Migrations.teacherPositionAdded.resources
+C:\Users\HP\GitRepositories\NNINO_PRJ\DAL\bin\Debug\Microsoft.AspNet.Identity.Core.dll
+C:\Users\HP\GitRepositories\NNINO_PRJ\DAL\bin\Debug\Microsoft.AspNet.Identity.EntityFramework.dll
+C:\Users\HP\GitRepositories\NNINO_PRJ\DAL\bin\Debug\Microsoft.AspNet.Identity.Core.xml
+C:\Users\HP\GitRepositories\NNINO_PRJ\DAL\bin\Debug\Microsoft.AspNet.Identity.EntityFramework.xml

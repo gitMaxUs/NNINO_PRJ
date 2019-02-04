@@ -8,7 +8,7 @@ using System.Web.Http;
 using WEB.Models;
 using WEB.UTIL;
 
-namespace WEB_NNINO_2.Controllers
+namespace WEB.Controllers
 {
     //[Authorize(Roles = "Admin")]
     [RoutePrefix("api/Methodist")]
@@ -25,7 +25,7 @@ namespace WEB_NNINO_2.Controllers
         //public MethodistController(IStudentService serv)
         //{
         //    StudentService = serv;
-        //  //  StudentService = new StudentService(DBConnection.ConnectionString);     // connection string Deffault Connection
+        //    //  StudentService = new StudentService(DBConnection.ConnectionString);     // connection string Deffault Connection
         //}
 
         [HttpGet]

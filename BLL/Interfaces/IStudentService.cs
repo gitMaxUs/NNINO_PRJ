@@ -3,7 +3,7 @@ using System.Collections.Generic;
 
 namespace BLL.Interfaces
 {
-    public interface IStudentService
+    public interface IStudentService : IGenericService<StudentDTO>
     {
 
     }

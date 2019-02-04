@@ -80,3 +80,7 @@ C:\Users\HP\GitRepositories\NNINO_PRJ\BLL\obj\Debug\BLL.dll
 C:\Users\HP\GitRepositories\NNINO_PRJ\BLL\obj\Debug\BLL.pdb
 C:\Users\HP\GitRepositories\NNINO_PRJ\BLL\bin\Debug\Ninject.dll
 C:\Users\HP\GitRepositories\NNINO_PRJ\BLL\bin\Debug\Ninject.xml
+C:\Users\HP\GitRepositories\NNINO_PRJ\BLL\bin\Debug\Microsoft.AspNet.Identity.Core.dll
+C:\Users\HP\GitRepositories\NNINO_PRJ\BLL\bin\Debug\Microsoft.AspNet.Identity.EntityFramework.dll
+C:\Users\HP\GitRepositories\NNINO_PRJ\BLL\bin\Debug\Microsoft.AspNet.Identity.Core.xml
+C:\Users\HP\GitRepositories\NNINO_PRJ\BLL\bin\Debug\Microsoft.AspNet.Identity.EntityFramework.xml

@@ -11,6 +11,6 @@ namespace BLL.Interfaces
 
         //void NotifyStudentProblem(StudentDTO student);    
 
-        IEnumerable<ProblemStudentDTO> GetStudentsWithProblems();
+        IEnumerable<ProblemStudentDTO> GetStudentsWithProblems();       //returns student that have problem with visit lessons
     }
 }

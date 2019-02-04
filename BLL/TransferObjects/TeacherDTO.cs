@@ -1,8 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
-
-namespace BLL.TransferObjects
+﻿namespace BLL.TransferObjects
 {
     public class TeacherDTO
     {
@@ -11,9 +7,10 @@ namespace BLL.TransferObjects
         public string Surname { get; set; }
         public string Email { get; set; }
 
+        public string Position { get; set; }
+
         public int? LessonId { get; set; }
 
         public int AddressId { get; set; }
-        // public LessonDTO Lesson { get; set; }
     }
 }

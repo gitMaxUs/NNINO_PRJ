@@ -1,6 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Text;
 
 namespace BLL.TransferObjects
 {
@@ -17,6 +15,5 @@ namespace BLL.TransferObjects
         public bool StudentNotPressent { get; set; }
 
         public bool StudentWasNotOnTheLesson { get; set; }
-
     }
 }
