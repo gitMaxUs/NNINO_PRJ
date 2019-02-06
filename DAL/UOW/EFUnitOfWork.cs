@@ -18,8 +18,8 @@ namespace DAL.UOW
         {
             DB_Context = new EFContext(connectionString);
         }
-
-
+        
+       
         public IGenericRepository<Student> StudentUOW
         {
             get
