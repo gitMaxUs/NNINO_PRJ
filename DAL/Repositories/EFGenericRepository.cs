@@ -20,8 +20,7 @@ namespace DAL.Repositories
             DBEntity = context.Set<TEntity>();
         }
 
-
-
+        
         public async Task<IEnumerable<TEntity>> GetAllAsync()
         {
             var result = await DBEntity.ToListAsync();

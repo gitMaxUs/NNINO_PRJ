@@ -44,7 +44,7 @@ namespace WEB.Controllers
             IEnumerable<StudentDTO> studentDTO = StudentService.GetItems();
 
             if (studentDTO == null)
-                throw new Exception();
+                throw new Exception(); 
 
             ViewBag.Title = "Home wewePage";
 

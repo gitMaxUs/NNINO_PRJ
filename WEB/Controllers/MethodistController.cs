@@ -10,11 +10,11 @@ using WEB.UTIL;
 
 namespace WEB.Controllers
 {
-    //[Authorize(Roles = "Admin")]
+    [Authorize(Roles = "Methodist")]
     [RoutePrefix("api/Methodist")]
     public class MethodistController : ApiController
     {
-        StudentService StudentService;
+        IStudentService StudentService;
 
         public MethodistController()
         {
