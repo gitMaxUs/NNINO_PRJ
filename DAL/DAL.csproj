@@ -59,6 +59,7 @@
     <Compile Include="Entities\Address.cs" />
     <Compile Include="Entities\EFContext.cs" />
     <Compile Include="Entities\Group.cs" />
+    <Compile Include="Entities\HeadStudent.cs" />
     <Compile Include="Entities\Lesson.cs" />
     <Compile Include="Entities\PresetStudent.cs" />
     <Compile Include="Entities\ProblemStudent.cs" />

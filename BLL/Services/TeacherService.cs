@@ -8,7 +8,7 @@ using System.Collections.Generic;
 
 namespace BLL.Services
 {
-    class TeacherService : ITeacherService, ILessonService
+    public class TeacherService : ITeacherService, ILessonService
     {
         private readonly int maxTimeStudentCanSkippClasses = 5;
         private string NoteAboutStudent = "Не був присутній на занятті";

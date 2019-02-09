@@ -64,4 +64,3 @@ C:\Users\HP\GitRepositories\NNINO_PRJ\DAL\bin\Debug\Microsoft.AspNet.Identity.Co
 C:\Users\HP\GitRepositories\NNINO_PRJ\DAL\bin\Debug\Microsoft.AspNet.Identity.EntityFramework.dll
 C:\Users\HP\GitRepositories\NNINO_PRJ\DAL\bin\Debug\Microsoft.AspNet.Identity.Core.xml
 C:\Users\HP\GitRepositories\NNINO_PRJ\DAL\bin\Debug\Microsoft.AspNet.Identity.EntityFramework.xml
-C:\Users\HP\GitRepositories\NNINO_PRJ\DAL\obj\Debug\DAL.csprojAssemblyReference.cache

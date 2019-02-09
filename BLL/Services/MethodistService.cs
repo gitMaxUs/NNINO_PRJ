@@ -8,7 +8,7 @@ using System.Collections.Generic;
 
 namespace BLL.Services
 {
-    class MethodistService : IMethodistService, IGenericService<StudentDTO>
+    public class MethodistService : IMethodistService, IGenericService<StudentDTO>
     {
         IUnitOFWork UnitOfWork { get; set; }
         public MethodistService(string connectionString)

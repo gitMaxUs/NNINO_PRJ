@@ -12,11 +12,16 @@ namespace WEB.Controllers
 {
     public class HomeController : Controller
     {
-        StudentService StudentService;
+        IStudentService StudentService;
+        MethodistService MethodistService;
+        ITeacherService TeacherService;
 
         public HomeController()
         {
             StudentService = new StudentService(DBConnection.ConnectionString);     // connection string Deffault Connection
+            MethodistService = new MethodistService(DBConnection.ConnectionString);
+            TeacherService = new TeacherService(DBConnection.ConnectionString);
+
         }
         //IStudentService StudentService;
         //public HomeController(IStudentService serv)
@@ -26,30 +31,51 @@ namespace WEB.Controllers
         //}
 
         //[Authorize(Roles = "admin")]
+        //public ActionResult Index()
+        //{
+        //    #region
+        //    //IEnumerable<StudentDTO> studentDTO;
+        //    //try
+        //    //{
+        //    //    studentDTO = StudentService.GetItems();
+
+        //    //    if (studentDTO == null)
+        //    //        throw new Exception();
+
+        //    //}
+        //    //catch (ValidationException ex)
+        //    //{
+        //    //    ModelState.AddModelError(ex.Property, ex.Message);               
+        //    //}
+        //    #endregion
+
+        //    IEnumerable<StudentDTO> studentDTO = StudentService.GetItems();
+
+        //    if (studentDTO == null)
+        //        throw new Exception();
+
+        //    ViewBag.Title = "Student view";
+
+        //    var mapper = new MapperConfiguration(cfg => cfg.CreateMap<StudentDTO, StudentViewModel>()).CreateMapper();
+        //    var studentList = mapper.Map<IEnumerable<StudentDTO>, List<StudentViewModel>>(studentDTO);
+
+        //    return View(studentList);
+        //}
         public ActionResult Index()
         {
-            //IEnumerable<StudentDTO> studentDTO;
-            //try
-            //{
-            //    studentDTO = StudentService.GetItems();
-
-            //    if (studentDTO == null)
-            //        throw new Exception();
-
-            //}
-            //catch (ValidationException ex)
-            //{
-            //    ModelState.AddModelError(ex.Property, ex.Message);               
-            //}
-            IEnumerable<StudentDTO> studentDTO = StudentService.GetItems();
-
-            if (studentDTO == null)
-                throw new Exception(); 
-
-            ViewBag.Title = "Home wewePage";
-
+            IEnumerable<StudentDTO> studentsDTO = StudentService.GetItems();
             var mapper = new MapperConfiguration(cfg => cfg.CreateMap<StudentDTO, StudentViewModel>()).CreateMapper();
-            var studentList = mapper.Map<IEnumerable<StudentDTO>, List<StudentViewModel>>(studentDTO);
+            var studentList = mapper.Map<IEnumerable<StudentDTO>, List<StudentViewModel>>(studentsDTO);
+
+
+            //IEnumerable<PresetStudentDTO> presetStudentDTOs = TeacherService.
+            IEnumerable<ProblemStudentDTO> problemStudentDTOs = MethodistService.GetStudentsWithProblems();
+
+            foreach (var item in problemStudentDTOs)
+            {
+                var num = item.Student.Name;
+            }
+
 
             return View(studentList);
         }

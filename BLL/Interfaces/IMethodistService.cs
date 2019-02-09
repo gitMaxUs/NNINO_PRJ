@@ -3,7 +3,7 @@ using System.Collections.Generic;
 
 namespace BLL.Interfaces
 {
-    interface IMethodistService
+    public interface IMethodistService
     {
         IEnumerable<StudentDTO> GetStudents(GroupDTO group);
 
