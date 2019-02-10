@@ -1,4 +1,5 @@
 ﻿using AutoMapper;
+using BL.Infrastructure;
 using BLL.Interfaces;
 using BLL.Services;
 using BLL.TransferObjects;
@@ -78,6 +79,38 @@ namespace WEB.Controllers
 
 
             return View(studentList);
+        }
+
+        [HttpPost]
+        public ActionResult Casy(StudentViewModel StudVM)
+        {
+            try
+            {
+                var list = StudentService.GetItems();
+                var studId = 0;
+
+                foreach (var item in list)
+                {
+                    if (item.Surname == StudVM.Surname)
+                        studId = item.Id;
+                }
+
+                var studentDTO = new PresetStudentDTO
+                {
+                    Date = DateTime.Now,
+                    Present = StudVM.IsPresent,
+                    StudentId = studId,
+                    StudentWasNotOnTheLesson = StudVM.IsPresent
+                };
+               
+                return Content("<h2>Список відсутніх студентів відправлено на опрацювання</h2>");
+            }
+            catch (ValidationException ex)
+            {
+                ModelState.AddModelError(ex.Property, ex.Message);
+            }
+
+            return View(StudVM);
         }
     }
 }
