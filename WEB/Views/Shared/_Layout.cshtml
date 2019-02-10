@@ -19,7 +19,7 @@
                     <span class="icon-bar"></span>
                     <span class="icon-bar"></span>
                 </button>
-                @Html.ActionLink("Application name", "Index", "Home", new { area = "" }, new { @class = "navbar-brand" })
+                @Html.ActionLink("Система моніторингу відвідувань занять студентами ННІНО", "Index", "Home", new { area = "" }, new { @class = "navbar-brand" })
             </div>
             <div class="navbar-collapse collapse">
                 <ul class="nav navbar-nav">
@@ -30,15 +30,15 @@
                 <ul class="nav navbar-nav navbar-right">
                     @if (!User.Identity.IsAuthenticated)
                     {
-                        <li>@Html.ActionLink("Войти", "Login", "Account")</li>
-                        <li>@Html.ActionLink("Регистрация", "Register", "Account")</li>
+                        <li>@Html.ActionLink("Ввійти", "Login", "Account")</li>
+                        <li>@Html.ActionLink("Реєстрація", "Register", "Account")</li>
                     }
                     else
                     {
                         <li>
                             <a>Привет @User.Identity.Name</a>
                         </li>
-                        <li>@Html.ActionLink("Выход", "Logout", "Account")</li>
+                        <li>@Html.ActionLink("Вихід", "Logout", "Account")</li>
                     }
 
                 </ul>
