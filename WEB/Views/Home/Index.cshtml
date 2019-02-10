@@ -1,9 +1,9 @@
 ﻿
 @{
-                /**/
+    /**/
 
-                ViewBag.Title = "Index";
-                Layout = "~/Views/Shared/_Layout.cshtml";
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
 
@@ -14,8 +14,10 @@
     ViewBag.Title = "Index";
 }
 
-<h2>@User.Identity.Name</h2> 
+@*<h2>@User.Identity.Name</h2>*@
+<h2>Алгоритми та структури даних</h2>
 <h4>@DateTime.Now</h4>
+<h3>Група 501</h3>
 
 @using (Html.BeginForm("Casy", "Home"))
 {
@@ -24,7 +26,7 @@
         <tr>
             <td>
                 <div class="form-group">
-
+                    @Html.TextBoxFor(Model => item.Surname)
                     @Html.TextBoxFor(Model => item.Name)
                     @Html.CheckBoxFor(modelItem => item.IsPresent) isPresentt
                 </div>
@@ -32,7 +34,7 @@
         </tr>
     }
     <div class="col-md-offset-2 col-md-10">
-        <input type="submit" value="Відправити" class="btn btn-default" />
+        <input type="submit" value="Зберегти" class="btn btn-default" />
     </div>
 }
 
