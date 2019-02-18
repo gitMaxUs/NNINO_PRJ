@@ -14,7 +14,7 @@ namespace WEB.Controllers
     public class HomeController : Controller
     {
         IStudentService StudentService;
-        MethodistService MethodistService;
+        IMethodistService MethodistService;
         ITeacherService TeacherService;
 
         public HomeController()
@@ -69,6 +69,9 @@ namespace WEB.Controllers
             var studentList = mapper.Map<IEnumerable<StudentDTO>, List<StudentViewModel>>(studentsDTO);
 
 
+            IEnumerable<StudentViewModel> swm;
+           
+
             //IEnumerable<PresetStudentDTO> presetStudentDTOs = TeacherService.
             IEnumerable<ProblemStudentDTO> problemStudentDTOs = MethodistService.GetStudentsWithProblems();
 
@@ -82,33 +85,33 @@ namespace WEB.Controllers
         }
 
         [HttpPost]
-        public ActionResult Casy(StudentViewModel StudVM)
+        public ActionResult Casy(IEnumerable<StudentViewModel> StudVM)
         {
-            try
-            {
-                var list = StudentService.GetItems();
-                var studId = 0;
+            //try
+            //{
+            //    var list = StudentService.GetItems();
+            //    var studId = 0;
 
-                foreach (var item in list)
-                {
-                    if (item.Surname == StudVM.Surname)
-                        studId = item.Id;
-                }
+            //    foreach (var item in list)
+            //    {
+            //        if (item.Surname == StudVM.Surname)
+            //            studId = item.Id;
+            //    }
 
-                var studentDTO = new PresetStudentDTO
-                {
-                    Date = DateTime.Now,
-                    Present = StudVM.IsPresent,
-                    StudentId = studId,
-                    StudentWasNotOnTheLesson = StudVM.IsPresent
-                };
+            //    var studentDTO = new PresetStudentDTO
+            //    {
+            //        Date = DateTime.Now,
+            //        Present = StudVM.IsPresent,
+            //        StudentId = studId,
+            //        StudentWasNotOnTheLesson = StudVM.IsPresent
+            //    };
                
-                return Content("<h2>Список відсутніх студентів відправлено на опрацювання</h2>");
-            }
-            catch (ValidationException ex)
-            {
-                ModelState.AddModelError(ex.Property, ex.Message);
-            }
+            //    return Content("<h2>Список відсутніх студентів відправлено на опрацювання</h2>");
+            //}
+            //catch (ValidationException ex)
+            //{
+            //    ModelState.AddModelError(ex.Property, ex.Message);
+            //}
 
             return View(StudVM);
         }

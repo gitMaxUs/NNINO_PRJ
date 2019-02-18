@@ -1,0 +1,37 @@
+﻿
+@{
+    ViewBag.Title = "Add";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Add</h2>
+
+@model WEB.Models.PresetStudentVIewModel; 
+
+
+@using (Html.BeginForm("StudentList", "Teacher", FormMethod.Post))
+{
+    <input type="hidden" value="@ViewBag.Id" name="TeacherId" />
+     
+    <table>
+        <tr>
+            <td>
+                <p> choose student: </p>
+            </td>
+        </tr>
+        @foreach (var student in Model)
+        {
+            <tr>
+                <td>
+                    <input id="checkBoxNum" name="checkBoxNum" type="checkbox" value=@student.Name />
+                    <input name="Enable" type="hidden" value=i />
+                    @Html.TextBox("Answers")
+                </td>
+            </tr>
+        }
+
+    </table>
+    <tr>
+        <td><input type="submit" /> </td>
+    </tr>
+}
